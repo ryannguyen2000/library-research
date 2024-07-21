@@ -3,8 +3,59 @@ import { Tabs } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import _ from "lodash";
+import { DiFirefox } from "react-icons/di";
+import { FaAccessibleIcon } from "react-icons/fa";
+import { FaBattleNet } from "react-icons/fa";
+import { FaAppleAlt } from "react-icons/fa";
+import { BsDiagram2Fill } from "react-icons/bs";
 
-const TabRoute = memo(({ to, label, disabled }) => {
+const items = [
+  {
+    key: "/",
+    label: "Home",
+    icon: <DiFirefox />,
+  },
+  {
+    key: "/ant-design",
+    label: "Ant Design",
+    icon: <FaAccessibleIcon />,
+  },
+  {
+    key: "/material",
+    label: "Material UI",
+    icon: <FaBattleNet />,
+  },
+  {
+    key: "/tailwind",
+    label: "Tailwind UI",
+    icon: <FaAppleAlt />,
+  },
+  {
+    key: "/react-flow",
+    label: "React Flow",
+    icon: <BsDiagram2Fill />,
+  },
+];
+
+const itemsRightMenu = [
+  {
+    key: "/sign-in",
+    label: "Sign In",
+    icon: <DiFirefox />,
+  },
+  {
+    key: "/sign-up",
+    label: "Sign Up",
+    icon: <DiFirefox />,
+  },
+  {
+    key: "/account-info",
+    label: "Account",
+    icon: <DiFirefox />,
+  },
+];
+
+const TabRoute = memo(({ to, label, disabled, icon }) => {
   return (
     <>
       <CsLink to={to} replace disabled={disabled}>
@@ -14,27 +65,55 @@ const TabRoute = memo(({ to, label, disabled }) => {
   );
 });
 
-const Menus = ({ items, activeKey, routeParent, ...props }) => {
+const Menus = ({ activeKey, routeParent, ...props }) => {
   return (
-    <MenuWrapper>
-      <CsTabs
-        activeKey={activeKey || ""}
-        items={_.map(items, (item) => {
-          const key = _.get(item, "key", "");
+    <>
+      <MenuWrapper>
+        <CsTabs
+          activeKey={activeKey || ""}
+          items={_.map(items, (item) => {
+            const key = _.get(item, "key", "");
+            return {
+              ...item,
+              label: (
+                <TabRoute
+                  disabled={_.get(item, "disabled", false)}
+                  to={routeParent ? `${routeParent}/${key}` : key}
+                  label={item.label}
+                  icon={_.get(item, "icon")}
+                />
+              ),
+            };
+          })}
+        />
+      </MenuWrapper>
+    </>
+  );
+};
 
-          return {
-            ...item,
-            label: (
-              <TabRoute
-                disabled={_.get(item, "disabled", false)}
-                to={routeParent ? `${routeParent}/${key}` : key}
-                label={item.label}
-              />
-            ),
-          };
-        })}
-      />
-    </MenuWrapper>
+const MenusRight = ({ activeKey, routeParent, ...props }) => {
+  return (
+    <>
+      <MenuWrapper>
+        <CsTabs
+          activeKey={activeKey || ""}
+          items={_.map(itemsRightMenu, (item) => {
+            const key = _.get(item, "key", "");
+            return {
+              ...item,
+              label: (
+                <TabRoute
+                  disabled={_.get(item, "disabled", false)}
+                  to={routeParent ? `${routeParent}/${key}` : key}
+                  label={item.label}
+                  icon={_.get(item, "icon")}
+                />
+              ),
+            };
+          })}
+        />
+      </MenuWrapper>
+    </>
   );
 };
 
@@ -48,6 +127,10 @@ const CsTabs = styled(Tabs)`
     a {
       display: block;
       font-size: 12px;
+    }
+    .ant-tabs-tab-btn {
+      display: flex;
+      align-items: center;
     }
   }
   .ant-tabs-tab-active {
@@ -66,4 +149,4 @@ export const CsLink = styled(Link)`
     props.disabled ? "rgba(0, 0, 0, 0.25)" : "rgba(0, 0, 0, 0.7)"};
 `;
 
-export default Menus;
+export { Menus, MenusRight };
