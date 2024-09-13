@@ -6,7 +6,8 @@
       "@hook/*": ["hook/*"],
       "@page/*": ["page/*"],
       "@routes/*": ["routes/*"],
-      "@setting/*": ["setting/*"]
+      "@setting/*": ["setting/*"],
+      "@redux/*": ["redux/*"]
     }
   }
 }

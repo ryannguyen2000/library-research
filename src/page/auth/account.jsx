@@ -1,6 +1,8 @@
-import React from "react";
+import { useGoogleOAuth,   } from "@react-oauth/google";
 
 const Account = () => {
+  const auth = useGoogleOAuth();
+  console.log("auth", auth);
   return (
     <div className="w-[428px] h-[926px] relative bg-white rounded-[38px] shadow">
       <div className="w-[428px] h-[929px] left-[1px] top-0 absolute" />

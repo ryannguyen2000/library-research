@@ -119,6 +119,7 @@ const MenusRight = ({ activeKey, routeParent, ...props }) => {
 
 const MenuWrapper = styled.div`
   padding: 10px 15px 0 15px;
+  align-self: center;
 `;
 
 const CsTabs = styled(Tabs)`

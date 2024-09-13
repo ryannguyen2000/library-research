@@ -61,7 +61,7 @@ const ReactFlowContain = () => {
         preventScrolling={state.preventScrolling}
         // nodeTypes={nodeTypes}
         minZoom={0}
-        onNodesChange={{}}
+        onNodesChange={() => {}}
         style={initialStyle}
         nodes={nodes}
         edges={edges}
