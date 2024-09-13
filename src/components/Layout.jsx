@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Outlet } from "react-router-dom";
+import { motion } from "framer-motion";
+
 import { Menus, MenusRight } from "../routes/menus";
 import { Box } from "./styles";
 
@@ -15,29 +17,58 @@ const stones = [
   "stone_9",
 ];
 
+const stonesAnimation = {
+  stone_1: { y: [0, -5, 0] },
+  stone_2: { y: [0, 0, 0] },
+  stone_3: { y: [0, -9, 0] },
+  stone_4: { y: [0, -11, 0], x: [0, 20, 0] },
+  stone_5: { y: [0, -13, 0] },
+  stone_6: { y: [0, -15, 0] },
+  stone_7: { y: [0, -30, 0] },
+  stone_8: { y: [0, -19, 0] },
+  stone_9: { y: [0, -21, 0] },
+};
+
+const srcCircle = `/images/background/circle.png`;
+
 function Layout() {
   return (
     <Container className="w-full">
       <Background>
+        <CircleAnimation
+          className="circle"
+          src={srcCircle}
+          initial={{ y: 0, x: 0 }}
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 10, repeat: Infinity, repeatType: "loop" }}
+        />
+
         {_.map(stones, (s) => (
-          <StoneAnimation className={s} src={`/images/background/${s}.png`} />
+          <StoneAnimation
+            key={s}
+            className={s}
+            src={`/images/background/${s}.png`}
+            initial={{ y: 0, x: 0 }}
+            animate={stonesAnimation[s]}
+            transition={{ duration: 10, repeat: Infinity, repeatType: "loop" }}
+          />
         ))}
       </Background>
-      <Wrap>
+      <MenuContainer>
         <Box flex gap={20} width="auto">
           <Logo>
             <img className="logo" src="/images/koi_1.png" />
             <div className="logo-text" width="auto">
-              HuHuHaHa
+              Bao Snakehead
             </div>
           </Logo>
           <Menus />
         </Box>
         <MenusRight />
-      </Wrap>
-      <main>
+      </MenuContainer>
+      <ContentContainer>
         <Outlet />
-      </main>
+      </ContentContainer>
     </Container>
   );
 }
@@ -45,13 +76,19 @@ function Layout() {
 const Container = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  overflow-x: hidden;
 `;
 
-const Wrap = styled.div`
+const MenuContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 12px;
+  height: 80px;
+`;
+
+const ContentContainer = styled.main`
+  width: 100%;
+  height: calc(100% - 80px);
 `;
 
 const Logo = styled.div`
@@ -70,6 +107,7 @@ const Background = styled.div`
   background-image: url("/images/background/background_home.png");
   background-position: center;
   background-size: 100%;
+  background-attachment: fixed;
   width: 100%;
   height: 100%;
   top: 0;
@@ -125,8 +163,18 @@ const Background = styled.div`
     top: 40%;
     left: 0%;
   }
+
+  .circle {
+    width: 200px;
+  }
 `;
 
-const StoneAnimation = styled.img``;
+const StoneAnimation = styled(motion.img)``;
+
+const CircleAnimation = styled(motion.img)`
+  position: absolute;
+  top: 0;
+  left: 65%;
+`;
 
 export default Layout;
