@@ -30,7 +30,7 @@ const stonesAnimation: any = {
   stone_9: { y: [0, -21, 0] },
 };
 
-const srcCircle = `/images/background/circle.png`;
+const srcCircle = `/images/background/circle1.png`;
 
 function LayoutComponent({ children }: any) {
   return (
