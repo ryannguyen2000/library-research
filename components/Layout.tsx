@@ -3,8 +3,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import _ from "lodash";
-
-import Image from "next/image";
+import { Container } from "./styles";
 
 const stones = [
   "stone_1",
@@ -34,7 +33,7 @@ const srcCircle = `/images/background/circle1.png`;
 
 function LayoutComponent({ children }: any) {
   return (
-    <Container className="w-full">
+    <Container>
       <Background>
         <CircleAnimation
           className="circle"
@@ -55,55 +54,10 @@ function LayoutComponent({ children }: any) {
           />
         ))}
       </Background>
-      <MenuContainer className="flex gap-5">
-        <div className="flex gap-2">
-          <Logo>
-            <Image
-              width={100}
-              height={100}
-              className="logo"
-              alt="koi"
-              src="/images/koi_1.png"
-            />
-            <div className="logo-text">Bao</div>
-          </Logo>
-        </div>
-        {/* Menu */}
-        <div className="flex items-center">
-          <ul className="flex gap-3">
-            <li tabIndex={1} className="">
-              HOME
-            </li>
-          </ul>
-        </div>
-      </MenuContainer>
       {children}
     </Container>
   );
 }
-
-const Container = styled.div`
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  overflow-x: hidden;
-`;
-
-const MenuContainer = styled.div`
-  display: flex;
-  height: 80px;
-`;
-
-const Logo = styled.div`
-  z-index: 99;
-  display: flex;
-  gap: 3;
-  align-items: center;
-  justify-content: center;
-  .logo {
-    width: 100px;
-  }
-`;
 
 const Background = styled.div`
   position: absolute;
@@ -116,6 +70,7 @@ const Background = styled.div`
   top: 0;
   left: 0;
   right: 0;
+  z-index: -1;
   @media screen and (max-width: 1600px) {
     background-position: center;
   }

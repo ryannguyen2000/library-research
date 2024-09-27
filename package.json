@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/eslint-plugin-next": "^14.2.13",
+    "babel-plugin-styled-components": "^2.1.4",
     "framer-motion": "^11.5.4",
     "lodash": "^4.17.21",
     "next": "14.2.12",
