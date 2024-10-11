@@ -1,5 +1,5 @@
-import _ from "lodash"
-import styled from "styled-components"
+import _ from "lodash";
+import styled from "styled-components";
 
 import { formatter } from "@helpers/utility";
 
@@ -18,12 +18,15 @@ import { formatter } from "@helpers/utility";
 //   return formatMoney;
 // }
 
-export const ColMoney = ({ money, currency, style }) => {
+export const ColMoney = ({ money, style, suffix }) => {
   // const colorText = money > 1000000000 ? "orange" : "";
-  const isTextBold = _.get(style, "bold") ? "bold" : ""
+  const isTextBold = _.get(style, "bold") ? "bold" : "";
+
   return (
-    <WrapText style={{ fontWeight: isTextBold, color: _.get(style, "color") }}>
+    <WrapText style={{ fontWeight: isTextBold, color: _.get(style, "color"), backgroundColor: _.get(style, "backgroundColor") }}>
       {formatter(money)}
+      {" "}
+      {suffix}
     </WrapText>
   );
 };
@@ -31,4 +34,4 @@ export const ColMoney = ({ money, currency, style }) => {
 const WrapText = styled.div`
   display: flex;
   justify-content: flex-end;
-`
+`;

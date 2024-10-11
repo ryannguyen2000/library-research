@@ -1,35 +1,39 @@
 import moment from "moment";
 
-import { CommentOutlined, PoundOutlined } from "@ant-design/icons";
+import Financials from "./container/financials";
+import CustomerAcquisition from "./container/customerAcquisition";
+import UnitEconomics from "./container/unitEconomics";
+import OperatingMetric from "./container/operatingMetric";
+import IconParentMenu from "./image";
 
-import IncomeStatement from "./container/incomeStatement";
-import RevenueStream from "./container/revenueStream";
-import ArchivalRecords from "./container/archivalRecords";
-import ExpensesStream from "./container/expensesStream";
+export const CUSTOM_PREFIX = "custom-menu";
 
-export const routes = [
-  {
-    to: "incomeStatement",
-    icon: <CommentOutlined />,
-    element: IncomeStatement,
-  },
-  {
-    to: "revenueStream",
-    icon: <PoundOutlined />,
-    element: RevenueStream,
-  },
-  {
-    to: "expensesStream",
-    icon: <PoundOutlined />,
-    element: ExpensesStream,
-  },
-  {
-    to: "archival_records",
-    icon: <PoundOutlined />,
-    element: ArchivalRecords,
-    disabled: true,
-  },
-];
+export const parentRoutes = () => {
+  return [
+    {
+      to: "finalcials",
+      icon: <IconParentMenu name="home" />,
+      element: Financials,
+    },
+    {
+      to: "operating_metric",
+      icon: <IconParentMenu name="chronic" />,
+      element: OperatingMetric,
+    },
+    {
+      to: "customer_acquisition",
+      icon: <IconParentMenu name="filter" />,
+      element: CustomerAcquisition,
+      disabled: true,
+    },
+    {
+      to: "unit_ecomnomics",
+      icon: <IconParentMenu name="chart" />,
+      element: UnitEconomics,
+      disabled: true,
+    },
+  ]
+}
 
 export const pickTimeForToFrom = timelineType => {
   let from = undefined;

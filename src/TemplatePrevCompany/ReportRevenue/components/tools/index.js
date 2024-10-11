@@ -3,15 +3,15 @@ import { HeaderTop } from "@components/page/headerComponent";
 import { Box } from "@components/utility/styles";
 import ToolFilter from "./toolFilter";
 
-const ToolBar = ({ title, ...props}) => {
+const ToolBar = ({ title, nonFilter, ...props }) => {
   return (
-    <Topbar nonePadding={true}>
+    <Topbar nonPadding={true} nonPaddingMb={true}>
       <HeaderTop>
-        <h3>{title}</h3>
+        <h3 style={{ fontWeight: 400 }}>{title}</h3>
       </HeaderTop>
-      <Box pt={10}>
+      {!nonFilter && <Box pt={10}>
         <ToolFilter {...props} />
-      </Box>
+      </Box>}
     </Topbar>
   );
 };

@@ -92,14 +92,14 @@ const ToolFilter = ({ query, changeSearchParams, ...props }) => {
 
     const adjustedWeekNumber = moment(value).date() >= 22 ? 4 : weekNumberInMonth;
 
-    return isWeek ? `Tuần ${adjustedWeekNumber}, ${monthYear}` : moment(value).format(_.get(datePickerType, "format", "Y-MM-DD"))
+    return isWeek ? `Week ${adjustedWeekNumber}, ${monthYear}` : moment(value).format(_.get(datePickerType, "format", "Y-MM-DD"))
   };
 
   return (
     <Form layout="vertical">
       <Row gutter={6}>
         <Col xs={24} lg={5}>
-          <FormItem label="Khoảng thời gian">
+          <FormItem label="Timeline">
             <DateControlPicker
               onPrevClick={onArrowClick(mdate, "prev")}
               onNextClick={onArrowClick(mdate, "next")}
@@ -114,17 +114,17 @@ const ToolFilter = ({ query, changeSearchParams, ...props }) => {
           </FormItem>
         </Col>
         <Col xs={24} lg={4}>
-          <FormItem label="Loại thời gian">
+          <FormItem label="Timeline type">
             <Select options={_.values(REVENUE_TIME_TYPE)} onChange={onTimeType} value={_.get(query, "timelineType")} />
           </FormItem>
         </Col>
         <Col xs={24} lg={5}>
-          <FormItem label="Nguồn">
+          <FormItem label="Source">
             <Select onChange={updateState("source")} options={_.values(COST_STREAM_TYPE)} value={Number(_.get(query, "source")) || undefined} allowClear />
           </FormItem>
         </Col>
         <Col xs={24} lg={5}>
-          <FormItem label="Dự án">
+          <FormItem label="Project">
             <StreamProjects
               value={_.get(query, "projectId")}
               onChange={updateState("projectId")}
@@ -134,7 +134,7 @@ const ToolFilter = ({ query, changeSearchParams, ...props }) => {
           </FormItem>
         </Col>
         <Col xs={24} lg={5}>
-          <FormItem label="Nhà">
+          <FormItem label="Home">
             <Select
               showSearch
               optionFilterProp="label"

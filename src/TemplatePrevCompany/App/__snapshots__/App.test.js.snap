@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AppRouter /> renders with default props 1`] = `
+<div>
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      key=""
+      path="undefined/"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="host"
+      path="undefined/host"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="host/create"
+      path="undefined/host/create"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="host/:id"
+      path="undefined/host/:id"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="house"
+      path="undefined/house"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="house/create"
+      path="undefined/house/create"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="house/:id"
+      path="undefined/house/:id"
+    />
+    <Route
+      component={[Function]}
+      exact={false}
+      key="setting"
+      path="undefined/setting"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="user"
+      path="undefined/user"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="customer"
+      path="undefined/customer"
+    />
+    <Route
+      component={[Function]}
+      exact={false}
+      key="booking"
+      path="undefined/booking"
+    />
+    <Route
+      component={[Function]}
+    />
+  </Switch>
+</div>
+`;

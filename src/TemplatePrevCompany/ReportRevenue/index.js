@@ -1,21 +1,24 @@
-import _ from "lodash";
 import queryString from "query-string";
-import { useLocation, useNavigate } from "react-router";
+import { Route, Routes, useLocation, useNavigate } from "react-router";
 import { Link, useSearchParams } from "react-router-dom";
-import { useCallback, useEffect, useMemo } from "react";
-import { Menu } from "antd";
+import { memo, useCallback, useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
+import _ from "lodash"
 
 import IntlMessages from "@components/utility/intlMessages";
 import { createChangeParams } from "@helpers/func";
 
-import ContentRouterElement from "./container";
-import { ReportRevenueWrapper } from "./styles";
-import { routes } from "./const";
+import { CsMenu, ReportRevenueWrapper } from "./styles";
+import { parentRoutes } from "./const";
+import styled from "styled-components"
+
+export const CUSTOM_PREFIX = "custom-menu";
 
 const ReportRevenue = () => {
   const { pathname, search } = useLocation();
   const navigate = useNavigate();
+
+  const activeKeyParent = pathname.split("/")[2];
 
   const [searchParams, setSearchParams] = useSearchParams();
   const query = useMemo(() => queryString.parse(searchParams.toString()), [searchParams]);
@@ -25,46 +28,73 @@ const ReportRevenue = () => {
 
   const view = useSelector(state => state.App.view);
 
-  const activeKey = pathname.split("/")[2];
-
   const isMobile = view !== "DesktopView";
 
+  const ButtonMenu = styled(Link)`
+    pointer-events: ${props => (props.disabled ? "none" : "")};
+    cursor: ${props => props.disabled ? "not-allowed" : "pointer"};;
+  `
+
   useEffect(() => {
-    if (!activeKey) {
-      navigate(`revenueStream`, {
+    if (!activeKeyParent) {
+      navigate(`${activeKeyParent || "finalcials"}`, {
         replace: true,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeKey]);
+  }, [activeKeyParent])
+
+  const parentMenuItems = useMemo(() =>
+    parentRoutes(isMobile).map(item => ({
+      label: <ButtonMenu disabled={item.disabled} isMobile={isMobile} to={{ pathname: item.to }}>
+        <IntlMessages id={item.to} />
+      </ButtonMenu>,
+      key: item.to,
+      icon: item.icon,
+      disabled: item.disabled,
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    })), [parentRoutes]
+  );
 
   return (
-    <ReportRevenueWrapper>
-      <Menu
-        style={{ width: isMobile ? "100%" : 170 }}
-        defaultSelectedKeys={["revenueStream"]}
-        selectedKeys={activeKey}
-        mode={isMobile ? "horizontal" : "inline"}
-        items={_.map(routes, item => ({
-          label: (
-            <Link disabled={item.disabled} to={{ pathname: item.to, search }}>
-              <IntlMessages id={item.to} />
-            </Link>
-          ),
-          key: item.to,
-          icon: item.icon,
-          disabled: item.disabled,
-        }))}
-      />
-      <ContentRouterElement
-        searchParams={searchParams}
-        query={query}
-        changeSearchParams={changeSearchParams}
-        isMobile={isMobile}
-        pathName={activeKey}
-      />
-    </ReportRevenueWrapper>
-  );
+    <>
+      <ReportRevenueWrapper>
+        <CsMenu
+          getPopupContainer={triggerNode => triggerNode.parentNode}
+          key="report-revenue-menu"
+          className="report-revenue-menu"
+          isMobile={isMobile}
+          style={{ width: "100%", }}
+          selectedKeys={activeKeyParent}
+          mode="horizontal"
+          items={parentMenuItems}
+        />
+        <Routes>
+          {_.map(parentRoutes(isMobile), route => {
+            return (
+              <Route
+                key={route.to}
+                path={`/${route.to}/*`}
+                element={
+                  route.element && (
+                    <route.element
+                      searchParams={searchParams}
+                      query={query}
+                      changeSearchParams={changeSearchParams}
+                      isMobile={isMobile}
+                      search={search}
+                      navigate={navigate}
+                    />
+                  )
+                }
+              />
+            );
+          })}
+        </Routes>
+      </ReportRevenueWrapper>
+    </>
+  )
 };
 
-export default ReportRevenue;
+export default memo(ReportRevenue);
+
