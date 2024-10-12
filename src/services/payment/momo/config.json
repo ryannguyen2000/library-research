@@ -1,0 +1,8 @@
+{
+    "accessKey": "tSxIRS6eMOSHBvC0",
+    "serectkey": "0DGAMOMLS6TQjTMOGeku2PXIsw7fKwd8",
+    "partnerCode": "MOMORZYZ20200827",
+    "endpoint": "https://test-payment.momo.vn/gw_payment/transactionProcessor",
+    "returnUrl": "http://192.168.2.97:5000/booking",
+    "notifyurl": "http://localhost:8080/web/payment/momo_ipn_return"
+}

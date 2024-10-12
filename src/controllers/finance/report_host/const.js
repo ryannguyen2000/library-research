@@ -1,0 +1,33 @@
+const { OTAs } = require('@utils/const');
+
+const OTA_HAVE_VAT = [OTAs.Luxstay];
+
+const PAY_METHOD = {
+	OTA: 'OTA',
+	NH: 'NH',
+	CT: 'CT',
+	TM: 'TM',
+	MOMO: 'MOMO',
+	VNPAY: 'VNPAY',
+	APPOTAPAY: 'APPOTAPAY',
+	CNT: 'CNT',
+	CTC: 'CTC',
+	VOUCHER: 'VOUCHER',
+	DEFAULT: '',
+};
+const CASH_METHOD = [PAY_METHOD.TM, PAY_METHOD.DEFAULT, PAY_METHOD.VOUCHER];
+const HAS_TAX_METHOD = [
+	PAY_METHOD.OTA,
+	PAY_METHOD.NH,
+	PAY_METHOD.CT,
+	PAY_METHOD.MOMO,
+	PAY_METHOD.VNPAY,
+	PAY_METHOD.APPOTAPAY,
+];
+
+module.exports = {
+	OTA_HAVE_VAT,
+	PAY_METHOD,
+	CASH_METHOD,
+	HAS_TAX_METHOD,
+};

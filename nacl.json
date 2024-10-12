@@ -1,0 +1,87 @@
+[
+	{
+		"group": "admin",
+		"permissions": [
+			{
+				"resource": "*",
+				"methods": "*",
+				"action": "allow"
+			}
+		]
+	},
+	{
+		"group": "host",
+		"permissions": [
+			{
+				"resource": "/room/*",
+				"methods": "*",
+				"action": "allow"
+			},
+			{
+				"resource": "/reservation/*",
+				"methods": "*",
+				"action": "allow"
+			},
+			{
+				"resource": "/guest/*",
+				"methods": "*",
+				"action": "allow"
+			},
+			{
+				"resource": "/booking/*",
+				"methods": "*",
+				"action": "allow"
+			},
+			{
+				"resource": "/price/*",
+				"methods": "*",
+				"action": "allow"
+			},
+			{
+				"resource": "/messages/*",
+				"methods": "*",
+				"action": "allow"
+			},
+			{
+				"resource": "/upload/*",
+				"methods": "*",
+				"action": "allow"
+			},
+			{
+				"resource": "/user/*",
+				"methods": "*",
+				"action": "allow"
+			},
+			{
+				"resource": "/role/*",
+				"methods": "*",
+				"action": "allow"
+			},
+			{
+				"resource": "/inbox/*",
+				"methods": "*",
+				"action": "allow"
+			},
+			{
+				"resource": "/review/*",
+				"methods": "*",
+				"action": "allow"
+			}
+		]
+	},
+	{
+		"group": "guest",
+		"permissions": [
+			{
+				"resource": "/user/auth",
+				"methods": ["POST"],
+				"action": "allow"
+			},
+			{
+				"resource": "/booking/guide/*",
+				"methods": ["GET"],
+				"action": "allow"
+			}
+		]
+	}
+]

@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<link
+			rel="stylesheet"
+			href="https://staging-extranet-api.kovena-v2.whl-staging.com/assets/css/widgets/widget.css"
+		/>
+		<link rel="stylesheet" href="https://extranet-api.kovena.com/assets/css/widgets/widget.css" />
+	</head>
+	<body>
+		<div id="TransactionReport"></div>
+
+		<script type="text/javascript">
+			(document => {
+				const public_key = 'e4ea09c482d758c4c42cd60351e2261e';
+                
+				let script_src = 'https://staging-extranet-api.kovena-v2.whl-staging.com/assets/js/widget.min.js';
+				let script = document.createElement('script');
+				const url_api = 'https://staging-extranet-api.kovena-v2.whl-staging.com/api/v1/';
+
+				const data = {
+					public_key: public_key,
+					merchant_ids: [],
+				};
+
+				const TransactionReportElement = document.getElementById('TransactionReport');
+
+				const getAccessToken = () => {
+					return new Promise(resolve => {
+						fetch(`${url_api}embed/accessToken`, {
+							method: 'POST',
+							body: JSON.stringify(data),
+							headers: {
+								'Content-Type': 'application/json',
+							},
+						}).then(response => {
+							response.json().then(results => {
+								resolve(results);
+							});
+						});
+					});
+				};
+
+				let initReports = () => {
+					const handleStartTransactionReport = () => {
+						TransactionReport.start({
+							TransactionReportElement: TransactionReportElement,
+							url_api: url_api,
+							formatDate: 'DD/MM/YYYY',
+							labels: {
+								'Payout Date': 'Payout Date',
+								'Original Amount': 'Original Amount',
+								'Original Currency': 'Original Currency',
+								Surcharge: 'Surcharge',
+								'Guest Name': 'Guest Name',
+								'Booking Number': 'Booking Number',
+								'Booking Date': 'Booking Date',
+								'Booking Details': 'Booking Details',
+								'Check-In Date': 'Check-in Date',
+								'Check-Out Date': 'Check-out Date',
+							},
+						});
+					};
+
+					handleStartTransactionReport();
+
+					getAccessToken().then(response => {
+						kovena.access_token = response?.access_token;
+						kovena.merchants = response?.merchants;
+
+						handleStartTransactionReport();
+
+						setInterval(() => {
+							getAccessToken().then(response => {
+								kovena.access_token = response?.access_token;
+								kovena.merchants = response?.merchants;
+							});
+						}, 3600000);
+					});
+				};
+
+				script.onload = () => initReports();
+				script.async = true;
+				script.src = script_src;
+
+				document.body.appendChild(script);
+			})(document);
+		</script>
+	</body>
+</html>

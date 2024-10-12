@@ -1,0 +1,8 @@
+{
+    "001": "Thông tin không hợp lệ!",
+    "002": "Không tìm thấy thông tin tài khoản!",
+    "003": "Missing Authorization!",
+    "004": "Authorization failed!",
+    "005": "Giao dịch không hợp lệ!",
+    "500": "Internal Server Error!"
+}

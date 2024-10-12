@@ -1,0 +1,7 @@
+{
+    "error.auth.unauthorized": "Không có quyền truy cập!",
+    "error.auth.unauthenticated": "Truy cập bị từ chối!",
+    "error.query.invalid": "Dữ liệu đầu vào không hợp lệ!",
+    "error.sys.internal": "Lỗi máy chủ nội bộ!",
+    "error.resource.notfound": "Tài nguyên không tồn tại!"
+}

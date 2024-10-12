@@ -1,0 +1,7 @@
+{
+    "error.auth.unauthorized": "You are not have permission to access this resource!",
+    "error.auth.unauthenticated": "Access denied!",
+    "error.query.invalid": "Input query is invalid!",
+    "error.sys.internal": "Internal Server Error!",
+    "error.resource.notfound": "Not found resource!"
+}

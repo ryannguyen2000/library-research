@@ -1,0 +1,224 @@
+<html>
+	<head>
+		<style type="text/css">
+			* {
+				box-sizing: border-box;
+				font-family: Poppins, sans-serif;
+			}
+			table {
+				font-family: arial, sans-serif;
+				border-collapse: collapse;
+			}
+
+			td,
+			th {
+				/*border: 1px solid #dddddd;*/
+				text-align: left;
+				padding: 8px;
+			}
+
+			tr:nth-child(odd),
+			th {
+				background-color: #dddddd;
+			}
+			.payment.loading {
+				position: relative;
+			}
+			.payment.loading:after {
+				position: absolute;
+				content: '';
+				display: block;
+				top: 0;
+				left: 50%;
+				width: 120px;
+				height: 120px;
+				translate: -50% 0;
+				background-image: url(https://gateway.kovena.com/widgets/images/3-dots-animation.gif);
+				background-size: contain;
+			}
+			.dlg-processing,
+			.dlg-error {
+				position: fixed;
+				inset: 0;
+				z-index: 99999;
+				background-color: rgba(0, 0, 0, 0.3);
+			}
+			.dlg-processing > .body,
+			.dlg-error > .body {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				translate: -50% -50%;
+				text-align: center;
+				background-color: white;
+				border-radius: 5px;
+				min-width: 320px;
+				padding: 5px;
+			}
+
+			.container {
+				max-width: 400px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			.btn {
+				position: relative;
+				background-color: rgb(0, 78, 117);
+				border-color: rgb(0, 78, 117);
+				display: inline-block;
+				font-weight: 400;
+				white-space: nowrap;
+				text-align: center;
+				background-image: none;
+				border: 1px solid transparent;
+				cursor: pointer;
+				transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+				user-select: none;
+				touch-action: manipulation;
+				height: 32px;
+				padding: 0px 30px;
+				border-radius: 4px;
+				color: rgb(255, 255, 255);
+				box-shadow: none;
+				text-shadow: rgba(0, 0, 0, 0.12) 0px -1px 0px;
+				font-size: unset;
+			}
+
+			#submit-widget {
+				margin-top: 12px;
+				width: 100%;
+				text-align: center;
+			}
+		</style>
+		<link
+			rel="stylesheet"
+			href="https://staging-extranet-api.kovena-v2.whl-staging.com/assets/css/onboarding/_onboarding.css"
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<div id="OnboardingApp"></div>
+		</div>
+
+		<!-- <script src="https://staging-extranet-api.kovena-v2.whl-staging.com/assets/js/onboarding/onboarding.min.js"></script> -->
+
+		<script type="text/javascript">
+			(document => {
+				const public_key = 'e4ea09c482d758c4c42cd60351e2261e';
+
+				//PMS Name
+				const pmsName = 'Cozrum';
+
+				//PMS Logo
+				const pmsLogo = '';
+
+				const script_src =
+					'https://staging-extranet-api.kovena-v2.whl-staging.com/assets/js/onboarding/onboarding.min.js';
+
+				const script = document.createElement('script');
+
+				const url_api = 'https://staging-extranet-api.kovena-v2.whl-staging.com/api/v1';
+
+				const payload = {
+					public_key: public_key,
+				};
+
+				const OnboardingElement = document.getElementById('OnboardingApp');
+
+				const getAccessToken = () => {
+					return new Promise(resolve => {
+						fetch(`${url_api}/embed-onboarding/access-token`, {
+							method: 'POST',
+							body: JSON.stringify({
+								...payload,
+							}),
+							headers: {
+								'Content-Type': 'application/json',
+							},
+						}).then(response => {
+							response.json().then(results => {
+								resolve(results);
+							});
+						});
+					});
+				};
+
+				let initOnboarding = () => {
+					getAccessToken().then(response => {
+						const token = response?.data?.access_token;
+						const onboardingSettings = response?.data?.onboarding_setting;
+
+						window.EmbedOnboardingAccessToken = token;
+						window.partner_id = response?.data?.partner_id;
+
+						const script_payment = document.createElement('script');
+						script_payment.src = response?.data?.url_embed_credit;
+						document.body.appendChild(script_payment);
+
+						script_payment.onload = () => {
+							const appOptions = {
+								OnboardingElement: OnboardingElement,
+								EndpointApi: url_api,
+								PmsName: pmsName,
+								PmsLogo: pmsLogo,
+								ReferenceId: 'dce340a5-45be-40de-ab71-59c4cd08270d', // This value is required, normally, that should be your client_id
+								PublicKey: public_key,
+								partnerId: window.partner_id,
+								MerchantPmsDateJoin: 1721881347, // Date joined partner in timestamp format. This field will be used for the KYC process.
+								OnboardingSettings: onboardingSettings,
+								DefaultValueBusinessDetails: {
+									PropertyAdministrativeContact: 'Hung Le',
+									PropertyName: 'Cozrum Home',
+									PropertyContactEmail: 'admin@cozrum.com',
+									PropertyPhoneNumber: '0898555889',
+									AuthorizedSignatory: 'Authorized Signatory value',
+									AuthorizedSignatoryTitle: 'Authorized Signatory Title value',
+									Country: 'VN', // See: https://www.iso.org/obp/ui/#iso:pub:PUB500001:en for more detail
+									Timezone: '',
+								},
+							};
+
+							console.log(JSON.stringify(appOptions));
+
+							OnboardingApp.start(appOptions).then(onboarding => {
+								//Get merchant Info
+								$(onboarding.OnboardingElement).on(
+									'onMerchantCreationSuccess',
+									(event, merchantInfo) => {
+										console.log('Merchant Info: ', merchantInfo);
+									}
+								);
+
+								$(onboarding.OnboardingElement).on('onMerchantCreationFailed', (event, error) => {
+									console.log('Error: ', error);
+								});
+
+								//Get kyc Info
+								$(onboarding.OnboardingElement).on('onKycCreationSuccess', (event, kycInfo) => {
+									console.log('KYC Info: ', kycInfo);
+								});
+
+								$(onboarding.OnboardingElement).on('onKycCreationFailed', (event, error) => {
+									console.log('Error: ', error);
+								});
+							});
+						};
+
+						setInterval(() => {
+							getAccessToken().then(response => {
+								const token = response?.data?.access_token;
+								window.EmbedOnboardingAccessToken = token;
+							});
+						}, 14400000);
+					});
+				};
+				script.onload = () => initOnboarding();
+				script.async = true;
+				script.src = script_src;
+
+				document.body.appendChild(script);
+			})(document);
+		</script>
+	</body>
+</html>

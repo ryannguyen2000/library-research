@@ -1,0 +1,8 @@
+{
+    "00": "Confirm Success",
+    "01": "Order not found",
+    "02": "Order already confirmed",
+    "04": "Invalid amount",
+    "97": "Invalid signature",
+    "99": "Unknow error"
+}

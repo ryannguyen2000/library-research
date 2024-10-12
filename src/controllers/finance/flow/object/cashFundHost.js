@@ -1,0 +1,49 @@
+const { CASH_FLOW_OBJECT } = require('@utils/const');
+
+const LINES = [
+	{
+		from: CASH_FLOW_OBJECT.HOST_CASH_FUND,
+		to: CASH_FLOW_OBJECT.SERVICES,
+		line: 60,
+	},
+	{
+		from: CASH_FLOW_OBJECT.HOST_CASH_FUND,
+		to: CASH_FLOW_OBJECT.HOST_INCOME,
+		line: 61,
+	},
+	{
+		from: CASH_FLOW_OBJECT.HOST_CASH_FUND,
+		to: CASH_FLOW_OBJECT.MANAGE_FEE,
+		line: 62,
+	},
+	{
+		from: CASH_FLOW_OBJECT.HOST_CASH_FUND,
+		to: CASH_FLOW_OBJECT.MAINTENANCE,
+		line: 63,
+	},
+	{
+		from: CASH_FLOW_OBJECT.HOST_CASH_FUND,
+		to: CASH_FLOW_OBJECT.BUY_EQUIPMENT,
+		line: 64,
+	},
+	{
+		from: CASH_FLOW_OBJECT.HOST_CASH_FUND,
+		to: CASH_FLOW_OBJECT.OTHER_FEE,
+		line: 65,
+	},
+	{
+		from: CASH_FLOW_OBJECT.HOST_CASH_FUND,
+		to: CASH_FLOW_OBJECT.REFUND,
+		line: 66,
+	},
+	{
+		from: CASH_FLOW_OBJECT.HOST_CASH_FUND,
+		to: CASH_FLOW_OBJECT.BACKUP_CASH_FUND,
+		line: 73,
+	},
+];
+
+module.exports = {
+	LINES,
+	name: CASH_FLOW_OBJECT.HOST_CASH_FUND,
+};

@@ -1,0 +1,34 @@
+const { CASH_FLOW_OBJECT } = require('@utils/const');
+
+const LINES = [
+	{
+		from: CASH_FLOW_OBJECT.OTA_COLLECT,
+		to: CASH_FLOW_OBJECT.COMMISSION_OTA,
+		line: 8,
+	},
+	{
+		from: CASH_FLOW_OBJECT.OTA_COLLECT,
+		to: CASH_FLOW_OBJECT.THIRD_PARTY_PAYMENT,
+		line: 9,
+	},
+	{
+		from: CASH_FLOW_OBJECT.OTA_COLLECT,
+		to: CASH_FLOW_OBJECT.COMPANY_BANK_ACCOUNT,
+		line: 10,
+	},
+	{
+		from: CASH_FLOW_OBJECT.OTA_COLLECT,
+		to: CASH_FLOW_OBJECT.HOST_BANK_ACCOUNT,
+		line: 11,
+	},
+	{
+		from: CASH_FLOW_OBJECT.OTA_COLLECT,
+		to: CASH_FLOW_OBJECT.TRANSACTION_FEE,
+		line: 82,
+	},
+];
+
+module.exports = {
+	LINES,
+	name: CASH_FLOW_OBJECT.OTA_COLLECT,
+};

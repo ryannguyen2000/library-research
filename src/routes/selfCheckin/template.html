@@ -1,0 +1,205 @@
+<html>
+	<meta charset="UTF-8" />
+	<style type="text/css">
+		body {
+			margin: 0px;
+			padding: 0px;
+			font-family: 'Roboto', sans-serif;
+			font-size: 12px;
+			background: #fff;
+			color: #000;
+		}
+		p {
+			margin-bottom: 3px;
+			margin-top: 0px;
+		}
+		table {
+			padding: 0px;
+			margin: 0px;
+			width: 100%;
+			font-size: 1em;
+			border-spacing: 0px;
+		}
+		tbody,
+		tr,
+		td {
+			padding: 0px;
+			margin: 0px;
+			border-spacing: 0px;
+		}
+		.layout {
+			width: auto;
+			padding: 10px 2px;
+			position: relative;
+		}
+		.layout.top {
+			padding: 5px 2px;
+		}
+		.logo {
+			width: 95px;
+		}
+		.logo img {
+			width: 100%;
+		}
+		.table-top {
+			border-bottom: 5px solid #000;
+			padding-bottom: 10px;
+		}
+		.table-top-right {
+			padding-top: 14px;
+		}
+		.table-top-right td:first-child {
+			width: 30%;
+		}
+		.table-data p {
+			margin-bottom: 6px;
+		}
+		.table-data td:first-child {
+			width: 34%;
+		}
+		.footer {
+			padding-top: 18px;
+			border-top: 3px solid #000;
+		}
+		.footer p {
+			margin-bottom: 5px;
+			font-weight: 700;
+		}
+		.footer p:last-child {
+			font-weight: bold;
+			margin-bottom: 0;
+		}
+		.t-sm {
+			font-size: 11px;
+		}
+		.t-right {
+			text-align: right;
+		}
+		.t-center {
+			text-align: center;
+		}
+		.t-bold {
+			font-weight: bold;
+		}
+		.t-i {
+			font-style: italic;
+		}
+		.t-up {
+			text-transform: uppercase;
+		}
+		.t-md {
+			font-size: 12px;
+		}
+		.t-xl {
+			font-size: 14px;
+			letter-spacing: 2px;
+		}
+		.mb-1 {
+			margin-bottom: 6px;
+		}
+	</style>
+	<body>
+		<div class="layout top">
+			<table class="table-top">
+				<tr>
+					<td style="width: 50%;">
+						<div class="logo">
+							<img
+								src="data:image/jpeg;base64,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"
+								alt=""
+							/>
+						</div>
+					</td>
+					<td>
+						<div>
+							<table class="table-top-right">
+								<tr>
+									<td>
+										<p>Date:</p>
+									</td>
+									<td>
+										<p>{{date}}</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>No:</p>
+									</td>
+									<td>
+										<p>{{no}}</p>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="layout t-center">
+			<p class="t-bold mb-1 t-md t-up">{{home}}</p>
+			<p>{{address}}</p>
+		</div>
+		<div class="layout t-center t-bold t-xl">
+			YOUR ROOM NO. {{room}}
+		</div>
+		<div class="layout layout-data">
+			<table class="table-data">
+				<tr>
+					<td>
+						<p class="t-up">NAME:</p>
+					</td>
+					<td>
+						<p>{{name}}</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>CHECKIN:</p>
+					</td>
+					<td>
+						<p>{{checkin}}</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>CHECKOUT:</p>
+					</td>
+					<td>
+						<p>{{checkout}}</p>
+					</td>
+				</tr>
+				{{amount}}
+				<tr>
+					<td>
+						<p>STATE:</p>
+					</td>
+					<td>
+						<p class="t-bold t-up">{{state}}</p>
+					</td>
+				</tr>
+			</table>
+
+			<p class="t-i t-sm">
+				{{payment_reminder}}
+			</p>
+		</div>
+		<div class="layout t-center">
+			<div class="footer">
+				<div class="footer-wifi">
+					<p>
+						{{wifiName}}
+					</p>
+					<p>
+						Password wifi: {{wifiPassword}}
+					</p>
+					<p class="t-xl">
+						THANK YOU!
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="layout t-center">
+			<p>Email: admin@cozrum.com - Tel: 0898 555 889</p>
+		</div>
+	</body>
+</html>

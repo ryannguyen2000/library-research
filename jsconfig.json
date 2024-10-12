@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@src/*": ["src/*"],
+			"@automation/*": ["src/automation/*"],
+			"@models": ["src/models/index"],
+			"@models/*": ["src/models/*"],
+			"@routes/*": ["src/routes/*"],
+			"@core/*": ["src/core/*"],
+			"@ott/*": ["src/ott/*"],
+			"@utils/*": ["src/utils/*"],
+			"@controllers/*": ["src/controllers/*"],
+			"@config/*": ["config/*"],
+			"@services/*": ["src/services/*"],
+			"@workers/*": ["src/workers/*"]
+		}
+	}
+}

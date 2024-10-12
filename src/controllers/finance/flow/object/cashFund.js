@@ -1,0 +1,59 @@
+const { CASH_FLOW_OBJECT } = require('@utils/const');
+
+const LINES = [
+	{
+		from: CASH_FLOW_OBJECT.CASH_FUND,
+		to: CASH_FLOW_OBJECT.SERVICES,
+		line: 53,
+	},
+	{
+		from: CASH_FLOW_OBJECT.CASH_FUND,
+		to: CASH_FLOW_OBJECT.HOST_INCOME,
+		line: 54,
+	},
+	{
+		from: CASH_FLOW_OBJECT.CASH_FUND,
+		to: CASH_FLOW_OBJECT.MANAGE_FEE,
+		line: 55,
+	},
+	{
+		from: CASH_FLOW_OBJECT.CASH_FUND,
+		to: CASH_FLOW_OBJECT.MAINTENANCE,
+		line: 56,
+	},
+	{
+		from: CASH_FLOW_OBJECT.CASH_FUND,
+		to: CASH_FLOW_OBJECT.BUY_EQUIPMENT,
+		line: 57,
+	},
+	{
+		from: CASH_FLOW_OBJECT.CASH_FUND,
+		to: CASH_FLOW_OBJECT.OTHER_FEE,
+		line: 58,
+	},
+	{
+		from: CASH_FLOW_OBJECT.CASH_FUND,
+		to: CASH_FLOW_OBJECT.REFUND,
+		line: 59,
+	},
+	{
+		from: CASH_FLOW_OBJECT.CASH_FUND,
+		to: CASH_FLOW_OBJECT.BACKUP_CASH_FUND,
+		line: 72,
+	},
+	{
+		from: CASH_FLOW_OBJECT.CASH_FUND,
+		to: CASH_FLOW_OBJECT.COMMISSION_OTA,
+		line: 83,
+	},
+	{
+		from: CASH_FLOW_OBJECT.CASH_FUND,
+		to: CASH_FLOW_OBJECT.COMMISSION_COZRUM,
+		line: 87,
+	},
+];
+
+module.exports = {
+	LINES,
+	name: CASH_FLOW_OBJECT.CASH_FUND,
+};

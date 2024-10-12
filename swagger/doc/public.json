@@ -1,0 +1,520 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Public",
+		"version": "1",
+		"description": "Response format: #definitions/Response"
+	},
+	"basePath": "/web/v1",
+	"consumes": [
+		"application/json"
+	],
+	"produces": [
+		"application/json"
+	],
+	"paths": {
+		"/listing/blocks": {
+			"get": {
+				"tags": [
+					"listing"
+				],
+				"operationId": "getBlocks",
+				"summary": "getBlocks",
+				"responses": {
+					"200": {
+						"description": "Success"
+					}
+				}
+			}
+		},
+		"/listing/?checkIn={checkIn}&checkOut={checkOut}&guests={guests}&start={start}&limit={limit}": {
+			"get": {
+				"tags": [
+					"listing"
+				],
+				"operationId": "get available listings",
+				"summary": "getListings",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "checkIn",
+						"description": "checkIn",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "path",
+						"name": "checkOut",
+						"description": "checkOut",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "path",
+						"name": "guests",
+						"description": "guests",
+						"required": false,
+						"type": "number"
+					},
+					{
+						"in": "path",
+						"name": "start",
+						"description": "start",
+						"required": false,
+						"type": "number"
+					},
+					{
+						"in": "path",
+						"name": "limit",
+						"description": "limit",
+						"required": false,
+						"type": "number"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"listings": {
+									"$ref": "#/definitions/Listing"
+								},
+								"total": {
+									"type": "number"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/listing/{listingId}": {
+			"get": {
+				"tags": [
+					"listing"
+				],
+				"operationId": "get listing info",
+				"summary": "getListings",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "listingId",
+						"description": "listingId",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/Listing"
+						}
+					}
+				}
+			}
+		},
+		"/listing/{listingId}/price?from={from}": {
+			"get": {
+				"tags": [
+					"listing"
+				],
+				"operationId": "get listing price",
+				"summary": "getListingPrice",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "listingId",
+						"description": "listingId",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "path",
+						"name": "from",
+						"description": "from",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					}
+				}
+			}
+		},
+		"/reservation/inquiry": {
+			"post": {
+				"tags": [
+					"reservation"
+				],
+				"operationId": "tạo inquiry",
+				"summary": "inquiry",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "body",
+						"required": false,
+						"schema": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"fullName": {
+									"type": "string"
+								},
+								"email": {
+									"type": "string"
+								},
+								"phone": {
+									"type": "string"
+								},
+								"guests": {
+									"type": "number"
+								},
+								"checkIn": {
+									"type": "string"
+								},
+								"checkOut": {
+									"type": "string"
+								},
+								"listingId": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"bookingId": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/reservation/inquiry/{id}": {
+			"get": {
+				"tags": [
+					"reservation"
+				],
+				"operationId": "thông tin inquiry",
+				"summary": "inquiryDetail",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"description": "id",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"type": "object"
+						}
+					}
+				}
+			}
+		},
+		"/payment/get_status": {
+			"get": {
+				"tags": [
+					"payment"
+				],
+				"operationId": "thông tin thanh toán",
+				"summary": "get_payment_status",
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"type": "object"
+						}
+					}
+				}
+			}
+		},
+		"/payment/create_payment": {
+			"post": {
+				"tags": [
+					"payment"
+				],
+				"operationId": "tạo đường dẫn thanh toán",
+				"summary": "createPayment",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "body",
+						"required": true,
+						"schema": {
+							"type": "object",
+							"properties": {
+								"otaBookingId": {
+									"type": "string"
+								},
+								"method": {
+									"type": "string",
+									"default": "vnpay"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"data": {
+									"type": "object",
+									"properties": {
+										"url": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/form/invoice": {
+			"post": {
+				"tags": [
+					"Form"
+				],
+				"operationId": "formInvoice",
+				"summary": "Gửi yêu cầu xuất hóa đơn",
+				"consumes": [
+					"multipart/form-data"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "formData",
+						"name": "attachments",
+						"type": "array",
+						"required": true,
+						"items": {
+							"type": "file"
+						},
+						"description": "The file to upload."
+					},
+					{
+						"in": "formData",
+						"name": "bookingCode",
+						"type": "array",
+						"required": true,
+						"items": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "formData",
+						"name": "checkIn",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "formData",
+						"name": "checkOut",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "formData",
+						"name": "taxNumber",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "formData",
+						"name": "companyName",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "formData",
+						"name": "companyAddress",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "formData",
+						"name": "email",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "formData",
+						"name": "note",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error_code": {
+									"type": "number"
+								},
+								"error_msg": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/form/invoice/search": {
+			"get": {
+				"tags": [
+					"Form"
+				],
+				"operationId": "formInvoiceSearch",
+				"summary": "Tìm thông tin xuất hóa đơn cũ",
+				"parameters": [
+					{
+						"in": "query",
+						"name": "taxNumber",
+						"type": "string",
+						"required": true,
+						"description": "Mã số thuế"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error_code": {
+									"type": "number"
+								},
+								"data": {
+									"type": "object",
+									"properties": {
+										"taxNumber": {
+											"type": "string"
+										},
+										"companyName": {
+											"type": "string"
+										},
+										"companyAddress": {
+											"type": "string"
+										},
+										"email": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/reservation/search": {
+			"get": {
+				"tags": [
+					"reservation"
+				],
+				"operationId": "searchBookings",
+				"summary": "Tìm booking theo mã",
+				"parameters": [
+					{
+						"in": "query",
+						"name": "bookingCode",
+						"type": "string",
+						"required": true
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error_code": {
+									"type": "number"
+								},
+								"data": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"Listing": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				}
+			}
+		},
+		"FormInvoice": {
+			"type": "object",
+			"properties": {
+				"bookingCode": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"checkIn": {
+					"type": "string"
+				},
+				"checkOut": {
+					"type": "string"
+				},
+				"taxNumber": {
+					"type": "string"
+				},
+				"companyName": {
+					"type": "string"
+				},
+				"companyAddress": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"note": {
+					"type": "string"
+				},
+				"attachments": {
+					"type": "files"
+				}
+			}
+		}
+	}
+}

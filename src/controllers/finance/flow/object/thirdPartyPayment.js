@@ -1,0 +1,24 @@
+const { CASH_FLOW_OBJECT } = require('@utils/const');
+
+const LINES = [
+	{
+		from: CASH_FLOW_OBJECT.THIRD_PARTY_PAYMENT,
+		to: CASH_FLOW_OBJECT.TRANSACTION_FEE,
+		line: 12,
+	},
+	{
+		from: CASH_FLOW_OBJECT.THIRD_PARTY_PAYMENT,
+		to: CASH_FLOW_OBJECT.COMPANY_BANK_ACCOUNT,
+		line: 13,
+	},
+	{
+		from: CASH_FLOW_OBJECT.THIRD_PARTY_PAYMENT,
+		to: CASH_FLOW_OBJECT.HOST_BANK_ACCOUNT,
+		line: 14,
+	},
+];
+
+module.exports = {
+	name: CASH_FLOW_OBJECT.THIRD_PARTY_PAYMENT,
+	LINES,
+};

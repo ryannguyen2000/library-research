@@ -1,0 +1,484 @@
+<html>
+	<head>
+		<style type="text/css">
+			* {
+				box-sizing: border-box;
+				font-family: Poppins, sans-serif;
+			}
+			body {
+				margin: 0;
+				padding: 0;
+				font-size: 14px;
+				/* background: #f3f3f3; */
+				font-family: 'Roboto', sans-serif;
+			}
+			table {
+				font-family: arial, sans-serif;
+				border-collapse: collapse;
+			}
+
+			td,
+			th {
+				/*border: 1px solid #dddddd;*/
+				text-align: left;
+				padding: 8px;
+			}
+
+			tr:nth-child(odd),
+			th {
+				background-color: #dddddd;
+			}
+			.payment {
+				margin-top: 12px;
+			}
+			.payment.loading {
+				position: relative;
+			}
+			.payment.loading:after {
+				position: absolute;
+				content: '';
+				display: block;
+				top: 0;
+				left: 50%;
+				width: 120px;
+				height: 120px;
+				translate: -50% 0;
+				background-image: url(https://gateway.kovena.com/widgets/images/3-dots-animation.gif);
+				background-size: contain;
+			}
+			.dlg-processing,
+			.dlg-error {
+				position: fixed;
+				inset: 0;
+				z-index: 99999;
+				background-color: rgba(0, 0, 0, 0.3);
+			}
+			.dlg-processing > .body,
+			.dlg-error > .body {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				translate: -50% -50%;
+				text-align: center;
+				background-color: white;
+				border-radius: 5px;
+				min-width: 320px;
+				padding: 5px;
+			}
+
+			.container {
+				max-width: 400px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			.btn {
+				position: relative;
+				background-color: rgb(0, 78, 117);
+				border-color: rgb(0, 78, 117);
+				display: inline-block;
+				font-weight: 400;
+				white-space: nowrap;
+				text-align: center;
+				background-image: none;
+				border: 1px solid transparent;
+				cursor: pointer;
+				transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+				user-select: none;
+				touch-action: manipulation;
+				height: 32px;
+				padding: 0px 30px;
+				border-radius: 4px;
+				color: rgb(255, 255, 255);
+				box-shadow: none;
+				text-shadow: rgba(0, 0, 0, 0.12) 0px -1px 0px;
+				font-size: unset;
+			}
+			.divine-info {
+				display: flex;
+				-webkit-box-pack: justify !important;
+				justify-content: space-between !important;
+				border-bottom: 1px solid rgb(228, 228, 228);
+				padding: 8px 0px;
+			}
+			.text-primary {
+				color: rgb(0, 78, 117);
+				font-weight: bold;
+			}
+			.text-bold {
+				font-weight: 600;
+				color: black !important;
+			}
+
+			.title {
+				font-size: 1.35rem;
+				margin-bottom: 0.5rem;
+				margin-top: 0.5rem;
+				text-align: center;
+			}
+
+			#result {
+				margin-top: 12px;
+				width: 100%;
+				text-align: center;
+				font-weight: bold;
+				font-size: 17px;
+			}
+
+			#submit-widget {
+				margin-top: 12px;
+				width: 100%;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h5 class="title">Payment Infomation</h5>
+			<div class="divine-info">
+				<div>Booking ID:</div>
+				<div id="bookingId" class="text-primary"></div>
+			</div>
+			<div class="divine-info">
+				<div>Guest's Name:</div>
+				<div id="guestName" class="text-primary"></div>
+			</div>
+			<div class="divine-info">
+				<div>Check-in:</div>
+				<div id="checkin" class="text-primary"></div>
+			</div>
+			<div class="divine-info">
+				<div>Check-out:</div>
+				<div id="checkout" class="text-primary"></div>
+			</div>
+			<div class="divine-info">
+				<div>Amount to charge:</div>
+				<div id="amount" class="text-primary text-bold"></div>
+			</div>
+
+			<div id="payment" class="payment"></div>
+			<div id="submit-widget">
+				<!-- <button class="btn" id="validate">Validate</button> -->
+				<button class="btn" id="tokenizeButton">Submit</button>
+				<!-- <button class="btn" id="do3dsButton">Do 3ds</button> -->
+				<!-- <button class="btn" id="submit">Submit</button> -->
+			</div>
+			<p id="result"></p>
+		</div>
+
+		<script type="text/javascript">
+			const urlData = new URLSearchParams(window.location.search);
+
+			try {
+				const dataParam = urlData.get('data');
+				if (dataParam) {
+					const rawData = decodeURIComponent(escape(atob(dataParam)));
+					const jsonData = JSON.parse(rawData);
+
+					// console.log('rawData', rawData);
+					console.log('jsonData', jsonData);
+
+					window.token = jsonData.token;
+					window.widgetOptions = {
+						merchantId: jsonData.merchantId,
+						// reference:  'TEST' + Date.now(),
+						reference: jsonData.reference,
+						amount: jsonData.amount,
+						currency: jsonData.currency,
+						returnUrl: jsonData.return_url || '',
+						notifyUrl: jsonData.notify_url || '',
+						open3dsOnIframe: !!jsonData.open3dsOnIframe,
+					};
+
+					const booking_info = jsonData.booking_info;
+					window.notify_tokenize_url = jsonData.notify_tokenize_url || '';
+					window.widgetScript = jsonData.widgetScript;
+
+					if (booking_info) {
+						document.getElementById('bookingId').innerText = booking_info.booking_ref;
+						document.getElementById('guestName').innerText = booking_info.customer_name;
+						document.getElementById('checkin').innerText = booking_info.check_in_date;
+						document.getElementById('checkout').innerText = booking_info.check_out_date;
+						document.getElementById('amount').innerText = jsonData.amount
+							? `${jsonData.amount.toLocaleString()} ${jsonData.currency}`
+							: '';
+					}
+				}
+			} catch (e) {
+				console.error('not found url data', e);
+			}
+		</script>
+
+		<script src="https://staging-api.kovena-v2.whl-staging.com/widgets/secureForm/widget.js"></script>
+
+		<script type="text/javascript">
+			let getAccessToken = () => {
+				return `Bearer ${window.token}`;
+			};
+
+			let tokenizeButton = document.getElementById('tokenizeButton');
+			let do3dsButton = document.getElementById('do3dsButton');
+			let submit = document.getElementById('submit');
+			let validate = document.getElementById('validate');
+			let submitForm = document.getElementById('submit-widget');
+			let result = document.getElementById('result');
+
+			let styles = {
+				'*': 'font-size:1.0em',
+				'.form-payment': 'display:block',
+				'.fieldset': 'margin-bottom:13px',
+				'.fieldset.card-number': 'order:0',
+				'.fieldset.card-name': 'order:1',
+				'.fieldset.expiry-date': 'order:2; float:left; width:50%',
+				'.fieldset.cvv': 'order:3; float:right; width:40%',
+				'.fieldset.invalid:after': 'color:#c33025; font-size:smaller',
+				'.fieldset>label': 'display:block; font-size:15px; font-weight:bold;',
+				'.card-name>label': 'width:100%',
+				'.card-number>label': 'width:100%',
+				'.cvv>label': 'width:100%',
+				'.expiry-date>label': 'width:100%',
+				input: 'border:#888 solid 1px; width:100%; height:40px',
+				'form > input': 'background: #fff',
+				'*:invalid': 'border-color:#c33025',
+				'*:focus': 'border-color:#66AFE9',
+				'*::placeholder': 'color:#999',
+				'*:-ms-input-placeholder': 'color:#999',
+			};
+			let labels = {
+				'Name On Card': 'Name On Card',
+				'Card Number': 'Card Number',
+				CVV: 'CVV',
+				'Expiry Date': 'Expiry Date',
+			};
+			let placeholders = {
+				'Name On Card': 'Name On Card',
+				'Card Number': 'Card Number',
+				CVV: 'CVV',
+				'Expiry Date': 'MM/YY',
+			};
+			let errorMessages = {
+				'cardName-empty': 'Card name is required',
+				'cardNumber-invalid': 'Invalid card number',
+				'cardNumber-empty': 'Card number is required',
+				'cvv-invalid': 'Invalid CVV',
+				'cvv-empty': 'CVV is required',
+				'expiryDate-empty': 'Expiry Date is required',
+				'expiryDate-invalid': 'Invalid Expiry Date',
+			};
+
+			let createProcessingDialog = () => {
+				let content = document.createElement('div');
+				let $dialog = { dismiss: () => document.body.removeChild(content) };
+
+				content.innerHTML = `
+				<div class="payment-dialog dlg-processing">
+					<div class="body">
+						<img src="https://gateway.kovena.com/widgets/images/3-dots-animation.gif" height="48px" />
+						<h3>Payment Being Processed</h3>
+						<p>Our system is processing your payment request. This may take a while.</p>
+					</div>
+				</div>
+			`;
+
+				document.body.appendChild(content);
+
+				return $dialog;
+			};
+
+			let createErrorDialog = contentHtml => {
+				let content = document.createElement('div');
+				let $dialog = {
+					dismiss: () => {
+						document.body.removeChild(content);
+
+						if (typeof $dialog.onclose == 'function') {
+							$dialog.onclose();
+						}
+					},
+				};
+
+				content.innerHTML = `<div class="payment-dialog dlg-error">
+						<div class="body">
+							<h3>Process unsuccessful</h3>
+							<p>${contentHtml || 'Kindly review card details and attempt again.'}</p>
+							<button>Close</button>
+						</div>
+					</div>
+				`;
+
+				document.body.appendChild(content);
+
+				content.querySelector('button').onclick = () => $dialog.dismiss();
+
+				return $dialog;
+			};
+
+			let accessToken = getAccessToken();
+
+			// setInterval(() => (accessToken = getAccessToken()), 1800000);
+
+			submitForm.style.display = 'none';
+
+			Payment.widget({
+				styles: styles,
+				labels: labels,
+				placeholders: placeholders,
+				errorMessages: errorMessages,
+				container: document.getElementById('payment'),
+
+				...window.widgetOptions,
+				// merchantId: window.merchant_id,
+				// reference:  'TEST' + Date.now(),
+				// reference: window.reference,
+				// amount: window.amount,
+				// currency: window.currency,
+				// returnUrl: window.return_url,
+				// notifyUrl: window.notify_url,
+				// open3dsOnIframe: false,
+				// "3D": {
+				//     "guestName": "", // string or null
+				//     "bookingDate": "", // timestamp or null
+				//     "checkInDate": "" // timestamp or null
+				// }
+			})
+				.then(payment => {
+					let $dialog = null;
+
+					window.payment = payment;
+
+					submitForm.style.display = 'inline-block';
+
+					payment.on('cardInfo', async data => {
+						console.log(data);
+					});
+
+					payment.on('tokenize', async data => {
+						console.log(data);
+
+						if (data.status) {
+							// success
+
+							if (window.notify_tokenize_url) {
+								fetch(window.notify_tokenize_url, {
+									method: 'POST',
+									headers: {
+										'content-type': 'application/json',
+									},
+									body: JSON.stringify({
+										data,
+										reference: window.widgetOptions.reference,
+									}),
+								})
+									.then(r => r.json())
+									.then(res => {
+										$dialog.dismiss();
+
+										if (res.error_code === 0) {
+											tokenizeButton.style.display = 'none';
+
+											result.innerHTML = `Payment successfully!`;
+
+											return;
+										}
+
+										$dialog = createErrorDialog(res.error_msg);
+										$dialog.onclose = () => payment.blurry(false);
+									})
+									.catch(e => {
+										console.error(e);
+										$dialog.dismiss();
+
+										$dialog = createErrorDialog();
+										$dialog.onclose = () => payment.blurry(false);
+									})
+									.finally(() => {
+										tokenizeButton.disabled = false;
+									});
+							} else {
+								result.innerHTML = `Data tokenize successfully (vault_token: ${data.message.data.vault_token})`;
+								window.vault_token = `${data.message.data.vault_token}`;
+							}
+						} else {
+							$dialog.dismiss();
+							tokenizeButton.disabled = false;
+
+							// fail
+							if (data.message.data !== 'validate') {
+								//show error dialog
+								$dialog = createErrorDialog(data.message.message);
+								$dialog.onclose = () => payment.blurry(false);
+							}
+
+							window.vault_token = -1;
+
+							result.innerHTML = `Data tokenize fail!`;
+						}
+					});
+
+					payment.on('process3ds_success', async data => {
+						$dialog.dismiss();
+						do3dsButton.disabled = false;
+
+						console.log('process3ds_success');
+					});
+
+					payment.on('submit', async data => {
+						$dialog.dismiss();
+						console.log('submit', data);
+					});
+
+					if (do3dsButton) {
+						do3dsButton.onclick = async e => {
+							e.disabled = true;
+							payment.blurry(true);
+							$dialog = createProcessingDialog();
+							accessToken = await Promise.resolve(accessToken);
+							payment.accessToken = accessToken;
+							payment.process3ds({
+								amount: window.amount,
+								currency: window.currency,
+							});
+						};
+					}
+
+					if (tokenizeButton) {
+						tokenizeButton.onclick = async e => {
+							e.disabled = true;
+							$dialog = createProcessingDialog();
+							accessToken = await Promise.resolve(accessToken);
+							payment.accessToken = accessToken;
+							payment.tokenize();
+						};
+					}
+
+					if (submit)
+						submit.onclick = async e => {
+							e.disabled = true;
+							$dialog = createProcessingDialog();
+							accessToken = await Promise.resolve(accessToken);
+							payment.accessToken = accessToken;
+							payment.submit();
+						};
+
+					if (validate) {
+						validate.onclick = async () => {
+							payment.validate((result, errors) => {
+								if (result) {
+									// result = true
+									// do something
+									console.log(result, errors);
+								} else {
+									// errors = [message, detail]
+									// do something
+									console.log(result, errors);
+								}
+							});
+						};
+					}
+				})
+				.catch(error => {
+					alert(error.message);
+				});
+		</script>
+	</body>
+</html>

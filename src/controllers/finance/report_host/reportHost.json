@@ -1,0 +1,482 @@
+{
+    "EXTRA_FEE_TXT": {
+        "electricFee": {
+            "vi": "Tiền điện",
+            "en": "Electric cost"
+        },
+        "waterFee": {
+            "vi": "Tiền nước",
+            "en": "Water cost"
+        },
+        "extraFee": {
+            "vi": "Dịch vụ khác",
+            "en": "Extra fee"
+        },
+        "earlyCheckin": {
+            "vi": "Nhận phòng sớm",
+            "en": "Early checkin"
+        },
+        "lateCheckout": {
+            "vi": "Trả phòng trễ",
+            "en": "Late checkout"
+        },
+        "roomUpgrade": {
+            "vi": "Nâng hạng phòng",
+            "en": "Upgrade Room"
+        },
+        "extraPeople": {
+            "vi": "Thêm người",
+            "en": "Extra people"
+        },
+        "changeDateFee": {
+            "vi": "Đổi ngày",
+            "en": "Change Booking Date"
+        },
+        "managementFee": {
+            "vi": "Phí quản lý",
+            "en": "Management fee"
+        },
+        "compensation": {
+            "vi": "Bồi thường thiệt hại",
+            "en": "Compensation fee"
+        },
+        "cleaningFee": {
+            "vi": "Phí dọn dẹp",
+            "en": "Phí đặt phòng"
+        },
+        "bookingFee": {
+            "vi": "Phí đặt phòng",
+            "en": "Booking fee"
+        },
+        "minibar": {
+            "vi": "Minibar",
+            "en": "Minibar"
+        },
+        "vatFee": {
+            "vi": "Phí VAT",
+            "en": "VAT fee"
+        },
+        "serviceFee": {
+            "vi": "Phí dịch vụ",
+            "en": "Service fee"
+        },
+        "internetFee": {
+            "vi": "Tiền internet",
+            "en": "Internet fee"
+        },
+        "drinkWaterFee": {
+            "vi": "Bình nước uống",
+            "en": "Drink water fee"
+        },
+        "laundryFee": {
+            "vi": "Chăn ga, giặt đồ",
+            "en": "Laundry fee"
+        },
+        "motobikeFee": {
+            "vi": "Phí gửi xe máy",
+            "en": "Motobike fee"
+        },
+        "carFee": {
+            "vi": "Phí gửi xe otô",
+            "en": "Car fee"
+        }
+    },
+    "FEE_REPORT_GROUP_TXT": {
+        "electric": {
+            "vi": "Chi phí tiền điện",
+            "en": "Electric cost"
+        },
+        "water": {
+            "vi": "Chi phí tiền nước",
+            "en": "Water cost"
+        },
+        "internet": {
+            "vi": "Chi phí Internet",
+            "en": "Internet cost"
+        },
+        "repair": {
+            "vi": "Chi phí sửa chữa thay thế mới",
+            "en": "New replacement repair cost"
+        },
+        "security": {
+            "vi": "Chi phí an ninh",
+            "en": "Security fee"
+        },
+        "investment": {
+            "vi": "Thu hồi vốn đầu tư",
+            "en": "Investment"
+        },
+        "maintenance": {
+            "vi": "Chi phí bảo trì",
+            "en": "Maintaince fee"
+        },
+        "payment_fee": {
+            "vi": "Chi phí thanh toán các kênh",
+            "en": "Payment fee"
+        },
+        "financial_expenses": {
+            "vi": "Chi phí tài chính",
+            "en": "Financial expenses"
+        },
+        "_": {
+            "vi": "Chi hộ khác",
+            "en": "Others"
+        }
+    },
+    "OVERVIEW": {
+        "gmv": {
+            "name": {
+                "vi": "Tổng GMV",
+                "en": "Total GMV"
+            }
+        },
+        "totalRealRevenue": {
+            "name": {
+                "vi": "Doanh thu thực dùng để chia sẻ",
+                "en": "Total real revenue is for sharing"
+            }
+        },
+        "revenue": {
+            "name": {
+                "vi": "DOANH THU",
+                "en": "Revenue"
+            }
+        },
+        "revenueForTax": {
+            "name": {
+                "vi": "Doanh thu báo cáo thuế",
+                "en": "Taxable revenue"
+            }
+        },
+        "OTAFee": {
+            "name": {
+                "vi": "CHI PHÍ BÁN HÀNG",
+                "en": "Revenue"
+            },
+            "c1": {
+                "vi": "CÓ VAT",
+                "en": "BANK TRANSFER"
+            },
+            "c2": {
+                "vi": "TIỀN MẶT",
+                "en": "CASH"
+            },
+            "fees": {
+                "vi": "Chi Phí Hoa Hồng OTA và Phí kênh thanh toán ngắn hạn",
+                "en": "OTA fees and Payment fees"
+            }
+        },
+        "netRevenue": {
+            "name": {
+                "vi": "Doanh thu thuần",
+                "en": "Net revenue"
+            }
+        },
+        "realRevenue": {
+            "name": {
+                "vi": "Thực trạng thu",
+                "en": "Real revenue"
+            }
+        },
+        "cozrumDebt": {
+            "name": {
+                "vi": "Công nợ Cozrum",
+                "en": "Cozrum Debt"
+            }
+        },
+        "manageFee": {
+            "name": {
+                "vi": "Chi phí quản lý của chủ nhà",
+                "en": "Management costs"
+            },
+            "data": {
+                "vi": "Phí quản lý Cozrum",
+                "en": "Management costs"
+            }
+        },
+        "income": {
+            "name": {
+                "vi": "Thu nhập thực của chủ nhà",
+                "en": "Real Income"
+            }
+        },
+        "prepaid": {
+            "name": {
+                "vi": "PHẦN THU CHI HỘ - TRẢ TRƯỚC CỦA COZRUM",
+                "en": "Pay on behalf and Prepaid"
+            }
+        },
+        "otherFee": {
+            "name": {
+                "vi": "PHẦN THU KHÁC CỦA CHỦ NHÀ",
+                "en": "Others revenue"
+            }
+        },
+        "shareProfit": {
+            "name": {
+                "vi": "LỢI NHUẬN ĐƯỢC CHIA",
+                "en": "Profits are shared"
+            },
+            "c1": {
+                "vi": "Cozrum",
+                "en": "Cozrum"
+            },
+            "c2": {
+                "vi": "Chủ nhà",
+                "en": "Owner"
+            }
+        },
+        "payment": {
+            "name": {
+                "vi": "THANH TOÁN",
+                "en": "PAYMENT"
+            },
+            "c1": {
+                "vi": "Thanh toán lợi nhuận cho Cozrum",
+                "en": "Pay Cozrum profits"
+            },
+            "c2": {
+                "vi": "Thanh toán cho Chủ nhà",
+                "en": "Pay Owner profits"
+            },
+            "c3": {
+                "vi": "Thanh toán cho Cozrum phí nhân sự",
+                "en": "Pay Cozrum's employee expenses"
+            }
+        },
+        "finalRevenue": {
+            "name": {
+                "vi": "Thanh toán cho chủ nhà",
+                "en": "Payment"
+            },
+            "c1": {
+                "vi": "CHUYỂN KHOẢN TỪ TÀI KHOẢN CÔNG TY",
+                "en": "Transfer from bussiness account"
+            },
+            "c2": {
+                "vi": "CHUYỂN KHOẢN TỪ TÀI KHOẢN CÁ NHÂN",
+                "en": "Transfer from personal account"
+            }
+        },
+        "fee": {
+            "name": {
+                "vi": "Chi phí",
+                "en": "expense"
+            }
+        },
+        "netProfit": {
+            "name": {
+                "vi": "Lợi nhuận chung",
+                "en": "Net profit"
+            },
+            "c1": {
+                "vi": "Doanh thu trừ chi phí",
+                "en": "Subtract expenses from revenue"
+            }
+        },
+        "sharedCost": {
+            "name": {
+                "vi": "Chi phí chung",
+                "en": "Shared Costs"
+            }
+        },
+        "czIncome": {
+            "name": {
+                "vi": "Doanh thu Cozrum",
+                "en": "Cozrum's income"
+            }
+        },
+        "czCostRate": {
+            "name": {
+                "vi": "Tỷ lệ chi phí của Cozrum",
+                "en": "Cozrum's expenses ratio"
+            }
+        },
+        "hostIncome": {
+            "name": {
+                "vi": "Doanh thu chủ nhà",
+                "en": "Host's income"
+            }
+        },
+        "hostFee": {
+            "name": {
+                "vi": "Chi phí của chủ nhà",
+                "en": "Host's fee"
+            }
+        },
+        "NOI": {
+            "name": {
+                "vi": "NOI (NET OPERATING INCOME)",
+                "en": "NOI (NET OPERATING INCOME)"
+            }
+        },
+        "totalCommission": {
+            "name": {
+                "vi": "Chi phí hoa hồng",
+                "en": "Commision"
+            }
+        }
+    },
+    "UTILS": {
+        "from": {
+            "vi": "từ",
+            "en": "from"
+        },
+        "to": {
+            "vi": "đến",
+            "en": "to"
+        },
+        "shortTermRevenue": {
+            "vi": "Doanh thu ngắn hạn",
+            "en": "Short-term revenue"
+        },
+        "longTermRevenue": {
+            "vi": "Doanh thu dài hạn",
+            "en": "Long-term revenue"
+        },
+        "shortTermNetRevenue": {
+            "vi": "Doanh thu thuần ngắn hạn",
+            "en": "Short-term net revenue"
+        },
+        "longTermNetRevenue": {
+            "vi": "Doanh thu thuần dài hạn",
+            "en": "Long-term net revenue"
+        },
+        "longTermRecievables": {
+            "vi": "Thu tiền dịch vụ điện nước dài hạn",
+            "en": "Long-term recievables (Utility bills)"
+        },
+        "shortTermFee": {
+            "vi": "Chi phí quản lý ngắn hạn",
+            "en": "Short-term management fee"
+        },
+        "longTermFee": {
+            "vi": "Chi phí quản lý dài hạn",
+            "en": "Long-term management fee"
+        },
+        "manageFee": {
+            "vi": "Chi phí quản lý",
+            "en": "Management fee"
+        },
+        "incomeTax": {
+            "vi": "Chi phí tài chính (Thuế TNCN)",
+            "en": "Income Tax expense"
+        },
+        "bankTransfer": {
+            "vi": "Chuyển khoản",
+            "en": "Bank transfer"
+        },
+        "cash": {
+            "vi": "Tiền mặt",
+            "en": "Cash"
+        },
+        "commission": {
+            "vi": "Chi phí hoa hồng OTA",
+            "en": "Commission OTA"
+        },
+        "transactionFee": {
+            "vi": "Chi phí kênh thanh toán, chi phí cà thẻ ngắn hạn",
+            "en": "Short-term transaction fee"
+        },
+        "transactionFeeLT": {
+            "vi": "Chi phí kênh thanh toán, chi phí cà thẻ dài hạn",
+            "en": "Long-term transaction fee"
+        },
+        "commissionWithVAT": {
+            "vi": "Chi phí hoa hồng có VAT",
+            "en": "Commission"
+        },
+        "commissionExVAT": {
+            "vi": "Chi phí hoa hồng không có VAT",
+            "en": "Commission ex-VAT"
+        },
+        "cozrumRevenue": {
+            "vi": "Doanh thu Cozrum thu",
+            "en": "Cozrum collected"
+        },
+        "ownerRevenue": {
+            "vi": "Doanh thu chủ nhà đã thu",
+            "en": "Owner collected"
+        },
+        "uncollectedDebt": {
+            "vi": "Công nợ phải thu ngắn hạn",
+            "en": "uncollectedDebt"
+        },
+        "receivable": {
+            "vi": "Công nợ đã thu hồi",
+            "en": "receivable"
+        },
+        "otherRevenue": {
+            "vi": "Doanh thu khác",
+            "en": "Other Revenue"
+        },
+        "groundRent": {
+            "vi": "Doanh thu cho thuê mặt bằng",
+            "en": "Ground rent"
+        },
+        "recievables": {
+            "vi": "Doanh thu sử dụng dịch vụ của khách hàng",
+            "en": "Recievables (Utility bills)"
+        },
+        "deposit": {
+            "vi": "Tiền cọc",
+            "en": "Deposit"
+        },
+        "realRevenueBanking": {
+            "vi": "Doanh thu thực thu chuyển khoản",
+            "en": "Real Revenue from Banking"
+        },
+        "realRevenueCash": {
+            "vi": "Doanh thu thực thu từ tiền mặt",
+            "en": "Real Revenue from Cash"
+        },
+        "czIncomeSTManageFee": {
+            "vi": "Phí quản lí ngắn hạn",
+            "en": "Short-terms Management fee"
+        },
+        "czIncomeLTManageFee": {
+            "vi": "Phí quản lí dài hạn",
+            "en": "Long-terms Management fee"
+        },
+        "czIncomeReduction": {
+            "vi": "Doanh thu giảm trừ do chi phí chung",
+            "en": "Reduction by shared fee"
+        },
+        "czIncomeReductionWithTax": {
+            "vi": "Cozrum bù giảm trừ do chi phí chung và thuế",
+            "en": "Reduction by shared fee and tax"
+        },
+        "commissionAndTransFee": {
+            "vi": "Chi phí kinh doanh ngắn hạn của hoa hồng, kênh thanh toán, phí cà thẻ",
+            "en": "Short-terms Commission and Transaction Fee"
+        },
+        "commissionAndTransFeeLT": {
+            "vi": "Chi phí kinh doanh dài hạn của hoa hồng, kênh thanh toán, phí cà thẻ",
+            "en": "Long-terms Commission and Transaction Fee"
+        },
+        "commissionAutoRedux": {
+            "vi": "Chi phí hoa hồng OTAs tự động cấn trừ",
+            "en": "OTAs Commission are automatically redux"
+        },
+        "commissionNoAutoRedux": {
+            "vi": "Chi phí hoa hồng OTAs không tự động cấn trừ",
+            "en": "OTAs Commission aren't automatically redux"
+        },
+        "operationFee": {
+            "vi": "Chi phí Cozrum chi hộ",
+            "en": "Operation fee"
+        },
+        "hostNETIncome": {
+            "vi": "Thu nhập thực của chủ nhà",
+            "en": "NET Income"
+        },
+        "hostIncome": {
+            "vi": "Doanh thu chủ nhà",
+            "en": "Host's income"
+        },
+        "payForHost": {
+            "vi": "Phải thanh toán cho chủ nhà",
+            "en": "Pay for Owner"
+        }
+    }
+}

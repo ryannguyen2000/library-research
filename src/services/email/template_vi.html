@@ -1,0 +1,336 @@
+<html>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<body
+		style="
+			font-family: verdana, sans-serif;
+			color: #2b2b2b;
+			margin-top: 0;
+			margin-bottom: 0;
+			margin-right: 0;
+			margin-left: 0;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			padding-right: 10px;
+			padding-left: 10px;
+			font-size: 14px;
+			line-height: 1.5;
+			box-sizing: border-box;
+		"
+	>
+		<script type="application/ld+json">{{script}}</script>
+		<div
+			style="
+				padding-top: 20px;
+				padding-bottom: 20px;
+				padding-right: 0px;
+				padding-left: 0px;
+				max-width: 768px;
+				margin-top: auto;
+				margin-bottom: auto;
+				margin-right: auto;
+				margin-left: auto;
+			"
+		>
+			<div style="color: #004e75; text-align: center; font-weight: bold; font-size: 1.1rem; margin-top: 1rem;">
+				<div>THÔNG BÁO ĐẶT PHÒNG THÀNH CÔNG</div>
+				<div>MÃ XÁC NHẬN: {{booking_id}}</div>
+				<div>------------------------</div>
+			</div>
+			<div style="margin-top: 1rem;">
+				<div
+					style="
+						display: flex;
+						border-bottom-width: 1px;
+						border-bottom-style: solid;
+						padding-bottom: 8px;
+						align-items: center;
+					"
+				>
+					<div style="width: 73px; height: 90px; margin-right: 12px; flex-shrink: 0;">
+						<img src="cid:logo" width="100%" height="100%" alt="Cozrum Logo" />
+					</div>
+					<div>
+						<h5 style="font-weight: bold; font-size: 1.1rem; text-transform: uppercase;">
+							{{home_name}}
+						</h5>
+						<div style="text-transform: uppercase;">{{home_address}}</div>
+						<div style="font-size: 0.8rem; font-style: italic; margin-top: 1rem;">
+							<div>
+								HOTLINE:
+								<a href="tel:+84898555889" style="color: #004e75;">0898 555 889</a>
+							</div>
+							<div>
+								EMAIL HỖ TRỢ:
+								<a href="mailto:reservation@cozrum.com" style="color: #004e75;"
+									>reservation@cozrum.com</a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div style="margin-top: 1rem;">
+					<h4 style="margin-top: 5px; margin-bottom: 5px;">
+						1. Thông tin đặt phòng
+					</h4>
+					<table style="width: 100%; font-size: 0.9rem; border-spacing: 0px; margin-top: 1rem;">
+						<tbody>
+							<tr>
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 50px;
+										width: 40%;
+									"
+								>
+									- Tên đặt phòng:
+								</td>
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 6px;
+									"
+								>
+									{{guest_name}}
+								</td>
+							</tr>
+							<tr style="background: rgb(242, 242, 242);">
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 50px;
+										width: 40%;
+									"
+								>
+									- Số điện thoại:
+								</td>
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 6px;
+									"
+								>
+									{{guest_phone}}
+								</td>
+							</tr>
+							<tr>
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 50px;
+										width: 40%;
+									"
+								>
+									- Ngày nhận phòng:
+								</td>
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 6px;
+									"
+								>
+									{{checkin}}
+								</td>
+							</tr>
+							<tr style="background: rgb(242, 242, 242);">
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 50px;
+										width: 40%;
+									"
+								>
+									- Ngày trả phòng:
+								</td>
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 6px;
+									"
+								>
+									{{checkout}}
+								</td>
+							</tr>
+							<tr>
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 50px;
+										width: 40%;
+									"
+								>
+									- Số đêm:
+								</td>
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 6px;
+									"
+								>
+									{{night}} đêm
+								</td>
+							</tr>
+							<tr style="background: rgb(242, 242, 242);">
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 50px;
+										width: 40%;
+									"
+								>
+									- Loại phòng:
+								</td>
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 6px;
+									"
+								>
+									{{room_type}}
+								</td>
+							</tr>
+							<tr>
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 6px;
+									"
+								>
+									<b>TỔNG THANH TOÁN</b>
+								</td>
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 6px;
+									"
+								>
+									<b>{{total_price}}</b> {{VAT}}
+								</td>
+							</tr>
+							<tr style="background: rgb(242, 242, 242);">
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 6px;
+									"
+								>
+									Trạng thái thanh toán
+								</td>
+								<td
+									style="
+										padding-top: 6px;
+										padding-bottom: 6px;
+										padding-right: 6px;
+										padding-left: 6px;
+									"
+								>
+									{{payment_status}}
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div style="margin-top: 1rem;">
+					<h4 style="margin-top: 5px; margin-bottom: 5px;">
+						2. Quy định về nhận và trả phòng:
+					</h4>
+					<div style="font-size: 0.7rem;">
+						<p style="margin-top: 5px; margin-bottom: 5px;">
+							- Thời gian nhận phòng: từ 14:00 (2 PM) trở đi của ngày nhận phòng.
+						</p>
+						<p style="margin-top: 5px; margin-bottom: 5px;">
+							- Thời gian trả phòng: trễ nhất vào 12:00 (12PM) của ngày trả phòng.
+						</p>
+						<p style="margin-top: 5px; margin-bottom: 5px;">
+							- Phương thức nhận phòng: SELF-CHECK-IN (Tự nhận phòng).
+						</p>
+						<p style="margin-top: 5px; margin-bottom: 5px;">
+							- Hướng dẫn nhận phòng: Trong vòng 01 ngày trước ngày nhận phòng thực tế, nhân viên của
+							Cozrum sẽ liên hệ đến Khách hàng để xác nhận thời gian nhận phòng dự kiến và gửi Hướng dẫn
+							nhận phòng (dưới dạng đường link) cho Khách hàng.
+						</p>
+					</div>
+				</div>
+				<div style="margin-top: 1rem;">
+					<h4 style="margin-top: 5px; margin-bottom: 5px;">
+						3. Chính sách hủy phòng:
+					</h4>
+					<div style="font-size: 0.7rem;">
+						<p style="margin-top: 5px; margin-bottom: 5px;">
+							{{cancellation_policy}}
+						</p>
+					</div>
+				</div>
+				<div style="margin-top: 1rem;">
+					<h4 style="margin-top: 5px; margin-bottom: 5px;">
+						4. Chính sách đổi trả phòng:
+					</h4>
+					<div style="font-size: 0.7rem;">
+						<p style="margin-top: 5px; margin-bottom: 5px;">
+							- Trường hợp phòng đã đặt gặp sự cố không thể phục vụ, khách hàng sẽ được miễn phí nâng hạng
+							phòng hoặc linh hoạt chuyển đổi chi nhánh. Trường hợp khách không chấp thuận giải pháp được
+							đề xuất, phí phòng đã thanh toán trước sẽ được hoàn trả trong vòng 02 - 05 ngày làm việc.
+						</p>
+					</div>
+				</div>
+				<div style="margin-top: 1rem;">
+					<h4 style="margin-top: 5px; margin-bottom: 5px;">
+						5. Chính sách thay đổi thời gian nhận/trả phòng:
+					</h4>
+					<div style="font-size: 0.7rem;">
+						<p style="margin-top: 5px; margin-bottom: 5px;">
+							- Khách hàng sẽ được miễn phí thay đổi ngày nhận/trả phòng trong trường hợp thông báo với
+							nhân viên 01 ngày trước ngày nhận/trả phòng thực tế.
+						</p>
+						<p style="margin-top: 5px; margin-bottom: 5px;">
+							- Trường hợp khách thông báo trễ hơn thời gian quy định, nhân viên sẽ dựa theo tình trạng
+							phòng thực tế để đáp ứng nhu cầu của khách hàng và phí thay đổi sẽ được tính theo tỷ lệ phần
+							trăm dựa trên giá phòng.
+						</p>
+					</div>
+				</div>
+			</div>
+			<br />
+			<div style="font-size: 0.7rem;">
+				<b>LƯU Ý:</b> Quý Khách hàng vui lòng kiểm tra lại thông tin đặt phòng được xác nhận bên trên. Trường
+				hợp có sai sót về thông tin, Quý Khách hàng vui lòng liên hệ đến Email hỗ trợ khách hàng:
+				<a href="mailto:reservation@cozrum.com" style="color: #004e75;">reservation@cozrum.com </a>
+				hoặc gọi điện đến Hotline:
+				<a href="tel:+84898555889" style="color: #004e75;">0898 555 889</a>
+				để được hỗ trợ điều chỉnh kịp thời. Cozrum xin chân thành cảm ơn!
+			</div>
+		</div>
+	</body>
+</html>
