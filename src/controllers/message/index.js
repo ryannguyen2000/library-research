@@ -178,7 +178,7 @@ async function postMessage({ user, message, messageId, msg, msgId, reply, attach
 	await inbox.updateInbox({
 		senderId,
 		messageId: message._id,
-		title: 'Cozrum',
+		title: 'tb',
 		subTitle: msg,
 		ottSource: '',
 		groupIds: message.groupIds,

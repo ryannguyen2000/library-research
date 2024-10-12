@@ -12,7 +12,7 @@ const LOG_FIELDS_LABELS = {
 	categoryId: { vi: 'Khoản chi', en: 'Payment category' },
 	blockIds: { vi: 'Nhà', en: 'House' },
 	transactionFee: { vi: 'Phí thanh toán', en: 'Transaction fee' },
-	isInternal: { vi: 'Cozrum chi', en: 'Paid by Cozrum' },
+	isInternal: { vi: 'tb chi', en: 'Paid by tb' },
 	hasInvoice: { vi: 'Hoá đơn', en: 'Invoice' },
 	ignoreReport: { vi: 'Bỏ qua báo cáo', en: 'Hide on Report' },
 	paidAt: { vi: 'Ngày thu/chi', en: 'Date paid' },

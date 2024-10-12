@@ -75,16 +75,16 @@ async function getPipeline(query, user) {
 
 	let activeHomes = await models.Block.getActiveBlock(blockQuery);
 
-	let otas = [OTAs.CozrumWeb];
+	let otas = [OTAs.tbWeb];
 
 	if (user) {
-		otas.push(OTAs.Cozrum);
+		otas.push(OTAs.tb);
 	}
 	if (rateType === 'walkin') {
-		otas = [OTAs.Cozrum];
+		otas = [OTAs.tb];
 	}
 	if (rateType === 'online') {
-		otas = [OTAs.CozrumWeb];
+		otas = [OTAs.tbWeb];
 	}
 
 	const listingFilter = {
@@ -145,24 +145,24 @@ async function getPipeline(query, user) {
 	const firstMatch =
 		listing && listing.location
 			? [
-					{
-						$geoNear: {
-							near: listing.location,
-							distanceField: 'distance',
-							spherical: true,
-							maxDistance: 50000,
-							query: {
-								...listingFilter,
-								_id: { $ne: listing._id },
-							},
+				{
+					$geoNear: {
+						near: listing.location,
+						distanceField: 'distance',
+						spherical: true,
+						maxDistance: 50000,
+						query: {
+							...listingFilter,
+							_id: { $ne: listing._id },
 						},
 					},
-					{
-						$sort: {
-							distance: 1,
-						},
+				},
+				{
+					$sort: {
+						distance: 1,
 					},
-			  ]
+				},
+			]
 			: [{ $match: listingFilter }];
 
 	const pipeline = _.compact([
@@ -200,7 +200,7 @@ async function getPipeline(query, user) {
 		},
 		{
 			$lookup: {
-				from: models.CozrumPrice.collection.name,
+				from: models.tbPrice.collection.name,
 				let: { roomTypeId: '$roomTypeId', ratePlanId: '$rate.ratePlanId' },
 				pipeline: [
 					{
@@ -343,11 +343,11 @@ async function _getListingsProcessing(query, showTotal, user) {
 			},
 		]),
 		showTotal &&
-			models.Listing.aggregate([
-				...pipeline,
-				{ $group: { _id: null, total: { $sum: 1 } } },
-				{ $project: { _id: 0 } },
-			]).then(rs => _.get(rs, [0, 'total'], 0)),
+		models.Listing.aggregate([
+			...pipeline,
+			{ $group: { _id: null, total: { $sum: 1 } } },
+			{ $project: { _id: 0 } },
+		]).then(rs => _.get(rs, [0, 'total'], 0)),
 	]);
 
 	const VATPercent = getVATPercent();
@@ -684,9 +684,9 @@ async function getListingById(listingId) {
 		listing.roomNos = roomNos;
 		listing.roomIds = undefined;
 
-		const cozrumOTA = _.find(listing.OTAs, { active: true, otaName: OTAs.CozrumWeb });
+		const tbOTA = _.find(listing.OTAs, { active: true, otaName: OTAs.tbWeb });
 
-		listing.otaListingId = _.get(cozrumOTA, 'otaListingId');
+		listing.otaListingId = _.get(tbOTA, 'otaListingId');
 
 		if (mapperId) {
 			listing.blockId = { ...listing.blockId, mapperId };
@@ -694,7 +694,7 @@ async function getListingById(listingId) {
 
 		listing.blockId.OTAProperties = undefined;
 
-		const localOTA = _.find(listing && listing.OTAs, o => o.otaName === OTAs.CozrumWeb);
+		const localOTA = _.find(listing && listing.OTAs, o => o.otaName === OTAs.tbWeb);
 		if (localOTA) listing.name = localOTA.otaListingName || listing.name;
 	}
 
@@ -747,7 +747,7 @@ async function getListingPrice(listingId, query) {
 	const serviceType = parseInt(businessService) || Services.Day;
 
 	const listing = await models.Listing.findBySlugOrId(listingId);
-	const ota = _.find(listing && listing.OTAs, o => o.otaName === OTAs.CozrumWeb);
+	const ota = _.find(listing && listing.OTAs, o => o.otaName === OTAs.tbWeb);
 	if (!ota) {
 		logger.error('getListingPrice not found', listingId, query, listing);
 		return throwError(ERROR_CODE.NOT_FOUND_LISTING, language);
@@ -888,7 +888,7 @@ async function getListingAvailable(listingId, query) {
 	const { ratePlanId, language } = query;
 
 	const listing = await models.Listing.findBySlugOrId(listingId).select('OTAs roomTypeId');
-	const localOTA = _.find(listing && listing.OTAs, o => o.otaName === OTAs.CozrumWeb);
+	const localOTA = _.find(listing && listing.OTAs, o => o.otaName === OTAs.tbWeb);
 	if (!localOTA) {
 		return throwError(ERROR_CODE.NOT_FOUND_LISTING, language);
 	}
@@ -910,7 +910,7 @@ async function getListingAvailable(listingId, query) {
 		);
 	}
 
-	const dates = await models.CozrumPrice.find(filter).select('-_id date available');
+	const dates = await models.tbPrice.find(filter).select('-_id date available');
 
 	return { dates };
 }
@@ -922,7 +922,7 @@ async function getListingsInfo(blockId, from, to) {
 			OTAs: {
 				$elemMatch: {
 					active: true,
-					otaName: OTAs.CozrumWeb,
+					otaName: OTAs.tbWeb,
 					'rates.active': true,
 				},
 			},
@@ -930,7 +930,7 @@ async function getListingsInfo(blockId, from, to) {
 		.unwind('$OTAs')
 		.match({
 			'OTAs.active': true,
-			'OTAs.otaName': OTAs.CozrumWeb,
+			'OTAs.otaName': OTAs.tbWeb,
 		})
 		.unwind('$OTAs.rates')
 		.match({
@@ -946,7 +946,7 @@ async function getListingsInfo(blockId, from, to) {
 			url: 1,
 		});
 
-	const calendar = await models.CozrumPrice.aggregate()
+	const calendar = await models.tbPrice.aggregate()
 		.match({
 			date: {
 				$gte: from,

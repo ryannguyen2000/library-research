@@ -72,7 +72,7 @@ function mapSMStoStringee(account, phone, msg) {
 		answer_time_datetime: 0,
 		stop_time_datetime: 0,
 		created_datetime: timeStr,
-		project_name: 'Cozrum SMS',
+		project_name: 'tb SMS',
 		from_user_id: null,
 	};
 }
@@ -170,7 +170,7 @@ SMSSchema.statics = {
 			throw new Error('SMS Data body null');
 		}
 
-		return !!smsData.body.match(new RegExp('Cozrum hotline changed. Please call', 'i'));
+		return !!smsData.body.match(new RegExp('tb hotline changed. Please call', 'i'));
 	},
 
 	async updateCallLogBookingIds({ phone, zaloId, guestId }) {

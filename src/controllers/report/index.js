@@ -39,7 +39,7 @@ function getRevenueAmount(data) {
 		return amount || 0;
 	}
 
-	const amount = _.get(data.overview, 'payment.data.cozrum.total');
+	const amount = _.get(data.overview, 'payment.data.tb.total');
 	return amount ? -amount : 0;
 }
 
@@ -245,9 +245,8 @@ async function printIntroPage(params) {
 	const tmpIntroFilePath = await generateTmpPdfPath(
 		{
 			content: '',
-			introContent: `<div class="page intro-page"><div class="logo"><img alt="" class="h-100 intro-logo" src="${LOGO_INTRO_PAGE}" /></div><div class="title text-bold report-name">${
-				reportName ? _.toUpper(reportName) : ''
-			}</div><div class="title text-bold date">${monthText} ${period}</div></div><table class="table-wrapper"><thead><tr><td><div class="header-space" style="height: 40px"></div></td></tr></thead><tbody><tr class="break-page"><td class="page">${categoriesPageHtml}</td></tr></tbody><tfoot><tr><td><div class="footer-space"></div></td></tr></tfoot></table>`,
+			introContent: `<div class="page intro-page"><div class="logo"><img alt="" class="h-100 intro-logo" src="${LOGO_INTRO_PAGE}" /></div><div class="title text-bold report-name">${reportName ? _.toUpper(reportName) : ''
+				}</div><div class="title text-bold date">${monthText} ${period}</div></div><table class="table-wrapper"><thead><tr><td><div class="header-space" style="height: 40px"></div></td></tr></thead><tbody><tr class="break-page"><td class="page">${categoriesPageHtml}</td></tr></tbody><tfoot><tr><td><div class="footer-space"></div></td></tr></tfoot></table>`,
 			style: [INTRO_PAGE_STYLE, GLOBAL_STYLE].join(''),
 			blockName,
 			address,

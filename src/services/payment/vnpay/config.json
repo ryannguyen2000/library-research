@@ -1,5 +1,5 @@
 {
-    "vnp_TmnCode": "COZRUM02",
+    "vnp_TmnCode": "tb02",
     "vnp_HashSecret": "KRYGTSXGMJZIFERPHMJURMSWFZZRECTJ",
     "vnp_Url": "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html",
     "vnp_ReturnUrl": "http://192.168.2.97:5000/booking",

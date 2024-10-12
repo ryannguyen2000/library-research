@@ -53,7 +53,7 @@ async function checkData(taskId) {
 }
 
 function getRefundDescription(booking) {
-	return `COZRUM HOAN TIEN CHO MA DAT PHONG ${booking.otaBookingId}`;
+	return `tb HOAN TIEN CHO MA DAT PHONG ${booking.otaBookingId}`;
 }
 
 async function checkRefundMethod(query, user) {
@@ -221,9 +221,8 @@ async function refundFromThirdParty({ user, data, paymentRefs, task, booking, ca
 		currencyAmount,
 		collectorCustomName: method,
 		source: models.PaymentMethod.getPayoutSource(ref.method),
-		description: `Hoàn tiền qua ${method.toUpperCase()}, transaction no: ${paymentRef.transactionNo}, orderId: ${
-			paymentRef.ref
-		}`,
+		description: `Hoàn tiền qua ${method.toUpperCase()}, transaction no: ${paymentRef.transactionNo}, orderId: ${paymentRef.ref
+			}`,
 		createdAt: new Date(),
 		blockIds: [booking.blockId],
 		productId: paymentRef.transactionNo,

@@ -115,7 +115,7 @@ async function close() {
 		return;
 	}
 	if (STATE.browser) {
-		STATE.browser.close().catch(() => {});
+		STATE.browser.close().catch(() => { });
 		STATE.browser = null;
 	}
 }
@@ -237,7 +237,7 @@ async function makeTranserRequest({
 	const body = {
 		originatorAccount: {
 			identification: { identification: accountId, schemeName: 'ID' },
-			name: accountOriginName, // 'VND-TGTT-CTCP DV CONG NGHE COZRUM',
+			name: accountOriginName, // 'VND-TGTT-CTCP DV CONG NGHE tb',
 		},
 		requestedExecutionDate: date,
 		paymentType: isInternal ? 'TCB_INTERNAL_PAYMENTS' : 'TCB_NAPAS_PAYMENTS',
@@ -479,10 +479,10 @@ async function makeBulkTranserRequest({
 		JSON.stringify({
 			fileId: fileUploaded.fileId,
 			debitAccountNumber: accountNo, // '19033764681025',
-			debitAccountName: accountOriginName, // 'VND-TGTT-CTCP DV CONG NGHE COZRUM',
+			debitAccountName: accountOriginName, // 'VND-TGTT-CTCP DV CONG NGHE tb',
 			debitAccountId: accountId, // 'd64ec640-22ba-436b-803a-1eb0db5590ea',
 			batchName: fileName,
-			description: accountOriginName, // 'VND-TGTT-CTCP DV CONG NGHE COZRUM',
+			description: accountOriginName, // 'VND-TGTT-CTCP DV CONG NGHE tb',
 			approve: false,
 		}),
 		credentials
@@ -509,8 +509,7 @@ async function cancelTransferRequest({ username, password, id, status, orderId, 
 					.then(res => res.json())
 					.catch(e => e);
 			},
-			`${HOST}/api/corp-batch-payment-dis/client-api/v1/batch-${
-				isPayroll ? 'payrolls' : 'payments'
+			`${HOST}/api/corp-batch-payment-dis/client-api/v1/batch-${isPayroll ? 'payrolls' : 'payments'
 			}/orders/${orderId}/cancellation`,
 			credentials
 		);

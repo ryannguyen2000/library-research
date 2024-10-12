@@ -174,7 +174,7 @@ async function earningStats({
 	let actuallyAmount = 0;
 	let advancePaymentAmount = 0;
 	let refundAmount = 0;
-	let cozrumRevenue = 0;
+	let tbRevenue = 0;
 	let revenueAmount = 0;
 	let taxFeeAmount = 0;
 
@@ -269,7 +269,7 @@ async function earningStats({
 
 		earning.amount += price;
 		earning.otas[booking.otaName] += price;
-		cozrumRevenue += price * czRate;
+		tbRevenue += price * czRate;
 
 		const bookingPayouts = _.compact(
 			_.flatten([payouts[_id], ..._.map(booking.relativeBookings, rbid => payouts[rbid._id])])
@@ -362,7 +362,7 @@ async function earningStats({
 			const isStateEqConfirmed = rp.state === PayoutStates.CONFIRMED;
 			if (rp.payoutType === PayoutType.REFUND) {
 				const refund = Math.abs(rp.exchangePrice);
-				cozrumRevenue -= czRate * refund;
+				tbRevenue -= czRate * refund;
 				refundAmount += refund;
 
 				if (isStateEqConfirmed) {
@@ -391,7 +391,7 @@ async function earningStats({
 			taxFeeAmount += hasTax(getPayType(booking)) ? (price - booking.otaFee * rate) * taxRate : 0;
 		}
 
-		cozrumRevenue -= czRate * fee;
+		tbRevenue -= czRate * fee;
 		unpaidOTAFeeAmount += fee;
 		advancePaymentAmount -= fee;
 
@@ -446,14 +446,14 @@ async function earningStats({
 	const transactionFeeAmount = _.sum(_.values(transactionFees));
 	const feeAmount = transactionFeeAmount + unpaidOTAFeeAmount + refundAmount;
 	const receiableAmount = revenueAmount;
-	const czTaxFeeAmount = taxFeeAmount * (cozrumRevenue / (revenueAmount - feeAmount));
+	const czTaxFeeAmount = taxFeeAmount * (tbRevenue / (revenueAmount - feeAmount));
 
 	revenueAmount -= feeAmount + taxFeeAmount;
-	cozrumRevenue -= czTaxFeeAmount;
+	tbRevenue -= czTaxFeeAmount;
 
 	const revenueChart = {
-		cozrumRevenue: _.round(cozrumRevenue),
-		hostRevenue: _.round(revenueAmount - cozrumRevenue),
+		tbRevenue: _.round(tbRevenue),
+		hostRevenue: _.round(revenueAmount - tbRevenue),
 		otaFeeAmount: _.round(unpaidOTAFeeAmount),
 		transactionFeeAmount: _.round(transactionFeeAmount),
 		refundAmount: _.round(refundAmount),

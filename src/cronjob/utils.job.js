@@ -11,7 +11,7 @@ async function syncOrder(Model, key = 'order') {
 			.match({
 				OTAs: {
 					$elemMatch: {
-						otaName: LocalOTAs.CozrumWeb,
+						otaName: LocalOTAs.tbWeb,
 						active: true,
 					},
 				},

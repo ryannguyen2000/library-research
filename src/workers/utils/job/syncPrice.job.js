@@ -104,19 +104,19 @@ async function findSyncRefPrices({ otaListing, ratePlanId, price, blockId, listi
 
 	const refOTARates = frateIds.length
 		? await models.Rate.find({
-				blockId,
-				otaName: otaListing.otaName,
-				rateId: { $in: frateIds },
-		  })
+			blockId,
+			otaName: otaListing.otaName,
+			rateId: { $in: frateIds },
+		})
 		: [];
 
 	_.values(_.groupBy(filteredOtherRates, 'ratePlanId')).forEach(rrates => {
 		const rateIds = refOTARates.length
 			? rrates.filter(
-					r =>
-						refOTARates.some(re => re.rateId === r.rateId && re.isOtaChildRate === false) ||
-						!refOTARates.some(re => re.rateId === r.rateId)
-			  )
+				r =>
+					refOTARates.some(re => re.rateId === r.rateId && re.isOtaChildRate === false) ||
+					!refOTARates.some(re => re.rateId === r.rateId)
+			)
 			: rrates;
 
 		if (!rateIds.length) return;
@@ -415,7 +415,7 @@ async function syncLocalPrice() {
 		});
 
 		await _.uniqBy(roomRates, r => `${r.roomTypeId}${r.ratePlanId}`).asyncForEach(roomRate => {
-			return models.CozrumPrice.calcPromotionPrice({
+			return models.tbPrice.calcPromotionPrice({
 				roomTypeId: roomRate.roomTypeId,
 				ratePlanId: roomRate.ratePlanId,
 				from,

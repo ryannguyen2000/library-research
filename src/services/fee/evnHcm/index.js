@@ -89,7 +89,7 @@ async function getInvoices({ username, password, codes, date = new Date() }) {
 
 // getInvoices({
 // 	username: '0938878424',
-// 	password: 'Cozrum2024#',
+// 	password: 'tb2024#',
 // 	codes: ['PE01000008094', 'PE03000197739'],
 // 	date: new Date('2024-03-01'),
 // }).catch(e => {

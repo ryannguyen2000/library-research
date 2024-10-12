@@ -33,7 +33,7 @@ async function getHourlyPrice({
 	let defaultPrice = 0;
 	let promoPrice = 0;
 
-	const price = await models.CozrumPrice.findPrices({
+	const price = await models.tbPrice.findPrices({
 		roomTypeId,
 		ratePlanId: ratePlan._id,
 		checkIn,
@@ -88,7 +88,7 @@ async function getDailyPrice({
 	// roomIds,
 	numRoom,
 }) {
-	await models.CozrumPrice.calcPromotionPrice({
+	await models.tbPrice.calcPromotionPrice({
 		// otaListingId,
 		from: checkIn,
 		to: checkOut,
@@ -101,7 +101,7 @@ async function getDailyPrice({
 
 	const dates = getDatesRange(checkIn, checkOut);
 
-	const data = await models.CozrumPrice.aggregate()
+	const data = await models.tbPrice.aggregate()
 		.match({
 			roomTypeId: mongoose.Types.ObjectId(roomTypeId),
 			ratePlanId: ratePlan._id,
@@ -116,7 +116,7 @@ async function getDailyPrice({
 		});
 
 	// pricesData
-	await models.CozrumPromotion.populate(data, {
+	await models.tbPromotion.populate(data, {
 		path: 'promotionId',
 		select: 'discount type name',
 	});
@@ -131,31 +131,31 @@ async function getDailyPrice({
 		.map(date => {
 			const formattedDate = date.toDateMysqlFormat();
 
-			const cozrumPrice = _.get(pricesData, formattedDate) || {};
+			const tbPrice = _.get(pricesData, formattedDate) || {};
 
-			if (!cozrumPrice.price) {
-				_.set(cozrumPrice, 'price', basePrice);
+			if (!tbPrice.price) {
+				_.set(tbPrice, 'price', basePrice);
 			}
 
-			if (!cozrumPrice.price) {
+			if (!tbPrice.price) {
 				logger.warn(
-					`Not found cozrum price for ${otaListingId} ${roomTypeId} ${ratePlan._id} at ${formattedDate}`
+					`Not found tb price for ${otaListingId} ${roomTypeId} ${ratePlan._id} at ${formattedDate}`
 				);
 				return;
 			}
 
-			const singlePromoPrice = cozrumPrice.promotionPrice || cozrumPrice.price;
+			const singlePromoPrice = tbPrice.promotionPrice || tbPrice.price;
 
 			const result = {
-				defaultPrice: cozrumPrice.price,
+				defaultPrice: tbPrice.price,
 				promoPrice: singlePromoPrice,
 				date,
 				VATPercent,
-				noVATPrice: cozrumPrice.price / vatRate,
+				noVATPrice: tbPrice.price / vatRate,
 				noVATPromoPrice: singlePromoPrice / vatRate,
-				discount: _.get(cozrumPrice, 'promotionId.discount', 0),
-				promoType: _.get(cozrumPrice, 'promotionId.type', 0),
-				promoName: _.get(cozrumPrice, 'promotionId.name'),
+				discount: _.get(tbPrice, 'promotionId.discount', 0),
+				promoType: _.get(tbPrice, 'promotionId.type', 0),
+				promoName: _.get(tbPrice, 'promotionId.name'),
 			};
 
 			defaultPrice += result.defautlPrice;

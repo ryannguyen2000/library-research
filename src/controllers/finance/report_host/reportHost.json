@@ -178,10 +178,10 @@
                 "en": "Real revenue"
             }
         },
-        "cozrumDebt": {
+        "tbDebt": {
             "name": {
-                "vi": "Công nợ Cozrum",
-                "en": "Cozrum Debt"
+                "vi": "Công nợ tb",
+                "en": "tb Debt"
             }
         },
         "manageFee": {
@@ -190,7 +190,7 @@
                 "en": "Management costs"
             },
             "data": {
-                "vi": "Phí quản lý Cozrum",
+                "vi": "Phí quản lý tb",
                 "en": "Management costs"
             }
         },
@@ -202,7 +202,7 @@
         },
         "prepaid": {
             "name": {
-                "vi": "PHẦN THU CHI HỘ - TRẢ TRƯỚC CỦA COZRUM",
+                "vi": "PHẦN THU CHI HỘ - TRẢ TRƯỚC CỦA tb",
                 "en": "Pay on behalf and Prepaid"
             }
         },
@@ -218,8 +218,8 @@
                 "en": "Profits are shared"
             },
             "c1": {
-                "vi": "Cozrum",
-                "en": "Cozrum"
+                "vi": "tb",
+                "en": "tb"
             },
             "c2": {
                 "vi": "Chủ nhà",
@@ -232,16 +232,16 @@
                 "en": "PAYMENT"
             },
             "c1": {
-                "vi": "Thanh toán lợi nhuận cho Cozrum",
-                "en": "Pay Cozrum profits"
+                "vi": "Thanh toán lợi nhuận cho tb",
+                "en": "Pay tb profits"
             },
             "c2": {
                 "vi": "Thanh toán cho Chủ nhà",
                 "en": "Pay Owner profits"
             },
             "c3": {
-                "vi": "Thanh toán cho Cozrum phí nhân sự",
-                "en": "Pay Cozrum's employee expenses"
+                "vi": "Thanh toán cho tb phí nhân sự",
+                "en": "Pay tb's employee expenses"
             }
         },
         "finalRevenue": {
@@ -282,14 +282,14 @@
         },
         "czIncome": {
             "name": {
-                "vi": "Doanh thu Cozrum",
-                "en": "Cozrum's income"
+                "vi": "Doanh thu tb",
+                "en": "tb's income"
             }
         },
         "czCostRate": {
             "name": {
-                "vi": "Tỷ lệ chi phí của Cozrum",
-                "en": "Cozrum's expenses ratio"
+                "vi": "Tỷ lệ chi phí của tb",
+                "en": "tb's expenses ratio"
             }
         },
         "hostIncome": {
@@ -390,9 +390,9 @@
             "vi": "Chi phí hoa hồng không có VAT",
             "en": "Commission ex-VAT"
         },
-        "cozrumRevenue": {
-            "vi": "Doanh thu Cozrum thu",
-            "en": "Cozrum collected"
+        "tbRevenue": {
+            "vi": "Doanh thu tb thu",
+            "en": "tb collected"
         },
         "ownerRevenue": {
             "vi": "Doanh thu chủ nhà đã thu",
@@ -443,7 +443,7 @@
             "en": "Reduction by shared fee"
         },
         "czIncomeReductionWithTax": {
-            "vi": "Cozrum bù giảm trừ do chi phí chung và thuế",
+            "vi": "tb bù giảm trừ do chi phí chung và thuế",
             "en": "Reduction by shared fee and tax"
         },
         "commissionAndTransFee": {
@@ -463,7 +463,7 @@
             "en": "OTAs Commission aren't automatically redux"
         },
         "operationFee": {
-            "vi": "Chi phí Cozrum chi hộ",
+            "vi": "Chi phí tb chi hộ",
             "en": "Operation fee"
         },
         "hostNETIncome": {

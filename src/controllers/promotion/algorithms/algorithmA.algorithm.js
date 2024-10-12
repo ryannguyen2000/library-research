@@ -7,8 +7,7 @@ const otas = require('../otas');
 async function getPromotionSample(nominal_price, maximum_promotion, elasticity) {
 	const data = await new Promise((resolve, reject) => {
 		exec(
-			`${
-				process.env.PYTHON || 'python'
+			`${process.env.PYTHON || 'python'
 			} ${__dirname}/../../../../lib/smartprice/smartprice.py -m ${maximum_promotion} -e ${elasticity}`,
 			(error, stdout) => {
 				if (error !== null) {
@@ -54,7 +53,7 @@ function generatePromotionData({ data, infoKey, plan, blockId, avaiableRooms }) 
 				rooms: [],
 				active: true,
 				modifiled: true,
-				cozrum: {
+				tb: {
 					secretDeal: false,
 					maxPromo,
 					elasticity,

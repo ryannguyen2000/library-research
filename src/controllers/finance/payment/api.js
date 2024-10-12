@@ -401,7 +401,7 @@ async function refundBookingCard(booking, body, user) {
 		amount: -body.amount,
 		otaBookingId: booking.otaBookingId,
 		otaName: booking.otaName,
-		description: `COZRUM HOAN TIEN CHO MA DAT PHONG ${booking.otaBookingId}`,
+		description: `tb HOAN TIEN CHO MA DAT PHONG ${booking.otaBookingId}`,
 		groupIds: booking.groupIds,
 		blockId: booking.blockId,
 		isRefund: true,
@@ -445,9 +445,8 @@ async function refundBookingCard(booking, body, user) {
 		currencyAmount,
 		collectorCustomName: paymentRef.method,
 		source: PayoutSources.THIRD_PARTY,
-		description: `Hoàn tiền qua ${paymentRef.method.toUpperCase()}, transaction no: ${
-			paymentRef.transactionNo
-		}, orderId: ${paymentRef.ref}`,
+		description: `Hoàn tiền qua ${paymentRef.method.toUpperCase()}, transaction no: ${paymentRef.transactionNo
+			}, orderId: ${paymentRef.ref}`,
 		createdAt: new Date(),
 		blockIds: [booking.blockId],
 		productId: paymentRef.transactionNo,
@@ -599,9 +598,8 @@ async function chargeWithVaultToken({ paymentRef, booking, guestCard }) {
 					currencyAmount,
 					collectorCustomName: paymentRef.method,
 					source: PayoutSources.THIRD_PARTY,
-					description: `Paid by ${paymentRef.method.toUpperCase()}\nTransaction ID: ${
-						paymentRef.transactionNo
-					}\nOrder ID: ${paymentRef.ref}`,
+					description: `Paid by ${paymentRef.method.toUpperCase()}\nTransaction ID: ${paymentRef.transactionNo
+						}\nOrder ID: ${paymentRef.ref}`,
 					createdAt: new Date(),
 					blockIds: [booking.blockId],
 					productId: paymentRef.transactionNo,

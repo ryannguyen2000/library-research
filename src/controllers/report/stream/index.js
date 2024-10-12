@@ -480,8 +480,8 @@ async function onReportApproved(operation) {
 		const hotelCost = (data.fee.total + _.get(profit, 'min', 0)) / vatRate;
 		const hotelRevenue = data.overview.revenue.total / vatRate;
 		const hotelProfit = hotelRevenue - hotelCost;
-		const cozrumProfit = data.overview.profit.data.cozrum.total;
-		const ownerProfit = hotelProfit - cozrumProfit;
+		const tbProfit = data.overview.profit.data.tb.total;
+		const ownerProfit = hotelProfit - tbProfit;
 
 		const bulks = [];
 
@@ -498,7 +498,7 @@ async function onReportApproved(operation) {
 		let categoryId;
 
 		coopStreams.forEach(revenueStream => {
-			const totalAmount = revenueStream.source === REPORT_STREAM_SOURCES.CZ ? cozrumProfit : ownerProfit;
+			const totalAmount = revenueStream.source === REPORT_STREAM_SOURCES.CZ ? tbProfit : ownerProfit;
 
 			let setted = 0;
 

@@ -5,7 +5,7 @@ const OBJECT_NAME = {
 	[CASH_FLOW_OBJECT.UNPAID]: { vi: 'Chưa thu', en: 'Unpaid' },
 	[CASH_FLOW_OBJECT.IGNORE_PRICE]: { vi: 'Không tính doanh thu', en: 'Ignore revenue' },
 	[CASH_FLOW_OBJECT.COMMISSION_OTA]: { vi: 'Commision OTAs', en: 'Commision OTAs' },
-	[CASH_FLOW_OBJECT.COMMISSION_COZRUM]: { vi: 'Commision Cozrum', en: 'Commision Cozrum' },
+	[CASH_FLOW_OBJECT.COMMISSION_tb]: { vi: 'Commision tb', en: 'Commision tb' },
 	[CASH_FLOW_OBJECT.OTA_COLLECT]: { vi: 'OTAs', en: 'OTAs' },
 	[CASH_FLOW_OBJECT.THIRD_PARTY_PAYMENT]: { vi: 'Trung gian thanh toán', en: 'Third party payment' },
 	[CASH_FLOW_OBJECT.B2B]: { vi: 'B2B', en: 'B2B' },
@@ -26,7 +26,7 @@ const OBJECT_NAME = {
 	[CASH_FLOW_OBJECT.SERVICES]: { vi: 'Điện nước & dịch vụ', en: 'Services' },
 	[CASH_FLOW_OBJECT.TAX]: { vi: 'Thuế thu nhập', en: 'Revenue tax' },
 	[CASH_FLOW_OBJECT.HOST_INCOME]: { vi: 'Thu nhập của chủ nhà', en: 'Host income' },
-	[CASH_FLOW_OBJECT.MANAGE_FEE]: { vi: 'Chi phí vận hành Cozrum', en: 'Manage fee' },
+	[CASH_FLOW_OBJECT.MANAGE_FEE]: { vi: 'Chi phí vận hành tb', en: 'Manage fee' },
 	[CASH_FLOW_OBJECT.MAINTENANCE]: { vi: 'Đối tác bảo trì', en: 'Maintenance' },
 	[CASH_FLOW_OBJECT.BUY_EQUIPMENT]: { vi: 'Đối tác mua trang thiết bị', en: 'Buy equipment' },
 	[CASH_FLOW_OBJECT.OTHER_FEE]: { vi: 'Chi phí khác', en: 'Other fees' },
@@ -62,7 +62,7 @@ const GROUP = [
 	{
 		key: GROUP_KEY.PARTNER,
 		objects: [
-			CASH_FLOW_OBJECT.COMMISSION_COZRUM,
+			CASH_FLOW_OBJECT.COMMISSION_tb,
 			CASH_FLOW_OBJECT.COMMISSION_OTA,
 			CASH_FLOW_OBJECT.OTA_COLLECT,
 			CASH_FLOW_OBJECT.THIRD_PARTY_PAYMENT,
@@ -138,7 +138,7 @@ const GROUP_WITH_EXPENSE = [
 		key: GROUP_KEY.EXPANSE,
 		objects: [
 			CASH_FLOW_OBJECT.COMMISSION_OTA,
-			CASH_FLOW_OBJECT.COMMISSION_COZRUM,
+			CASH_FLOW_OBJECT.COMMISSION_tb,
 			CASH_FLOW_OBJECT.TRANSACTION_FEE,
 			CASH_FLOW_OBJECT.TAX,
 			CASH_FLOW_OBJECT.HOST_INCOME,

@@ -369,7 +369,7 @@ async function genRoomMapperSitemap() {
 		public: true,
 		OTAs: {
 			$elemMatch: {
-				otaName: OTAs.CozrumWeb,
+				otaName: OTAs.tbWeb,
 				active: true,
 				'rates.active': true,
 			},
@@ -404,7 +404,7 @@ async function genRoomMapperSitemap() {
 		result.push({
 			loc: `${URL_CONFIG.HOME}/${service}-homestay-${ward}/${room.url}`,
 			lastmod:
-				_.get(contentObjs[room.OTAs.find(o => o.otaName === OTAs.CozrumWeb).otaListingId], 'updatedAt') ||
+				_.get(contentObjs[room.OTAs.find(o => o.otaName === OTAs.tbWeb).otaListingId], 'updatedAt') ||
 				room.updatedAt,
 		});
 	});

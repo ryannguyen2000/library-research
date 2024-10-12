@@ -1,7 +1,7 @@
 const OTAs = {
-	Cozrum: 'cozrum',
-	CozrumWeb: 'cozrum.com',
-	CozrumExtend: 'cozrum_extend',
+	tb: 'tb',
+	tbWeb: 'tb.com',
+	tbExtend: 'tb_extend',
 	OwnerExtend: 'owner_extend',
 	Famiroom: 'famiroom',
 	Agoda: 'agoda',
@@ -29,7 +29,7 @@ const OTAs = {
 	Line: 'line',
 	Tiket: 'tiket',
 };
-const LocalOTA = OTAs.Cozrum;
+const LocalOTA = OTAs.tb;
 
 const BookingStatus = {
 	CONFIRMED: 'confirmed',
@@ -67,9 +67,9 @@ const Services = {
 module.exports = Object.freeze({
 	LocalOTA,
 	LocalOTAs: {
-		Cozrum: OTAs.Cozrum,
-		CozrumWeb: OTAs.CozrumWeb,
-		CozrumExtend: OTAs.CozrumExtend,
+		tb: OTAs.tb,
+		tbWeb: OTAs.tbWeb,
+		tbExtend: OTAs.tbExtend,
 	},
 	OTAs,
 	OTTs: {
@@ -91,7 +91,7 @@ module.exports = Object.freeze({
 	},
 
 	OTAHasGeniusPromotion: [OTAs.Booking],
-	OTANotHaveProperty: [OTAs.Cozrum, OTAs.CozrumWeb, OTAs.Airbnb, OTAs.Luxstay],
+	OTANotHaveProperty: [OTAs.tb, OTAs.tbWeb, OTAs.Airbnb, OTAs.Luxstay],
 	OTAsHavePrePaid: [
 		OTAs.Agoda,
 		OTAs.Airbnb,
@@ -1388,7 +1388,7 @@ module.exports = Object.freeze({
 		REFUND: 'REFUND',
 		// expense
 		COMMISSION_OTA: 'COMMISSION_OTA',
-		COMMISSION_COZRUM: 'COMMISSION_COZRUM',
+		COMMISSION_tb: 'COMMISSION_tb',
 		SERVICES: 'SERVICES',
 		TAX: 'TAX',
 		HOST_INCOME: 'HOST_INCOME',
@@ -1592,7 +1592,7 @@ module.exports = Object.freeze({
 		HOTEL_REVENUE: 'HOTEL_REVENUE',
 		HOTEL_EXPENSES: 'HOTEL_EXPENSES',
 		HOTEL_PROFIT: 'HOTEL_PROFIT',
-		COZRUM_PROFIT: 'COZRUM_PROFIT',
+		tb_PROFIT: 'tb_PROFIT',
 		OWNER_PROFIT: 'OWNER_PROFIT',
 		HOTEL_REVENUE_AVG: 'HOTEL_REVENUE_AVG',
 		ROOM_REVENUE_AVG: 'ROOM_REVENUE_AVG',

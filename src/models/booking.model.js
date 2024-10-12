@@ -422,7 +422,7 @@ Booking.pre('save', async function (next) {
 	}
 	if (
 		this.serviceType === Services.Month ||
-		this.otaName === OTAs.CozrumExtend ||
+		this.otaName === OTAs.tbExtend ||
 		this.otaName === OTAs.OwnerExtend
 	) {
 		this.ignoreGuide = true;
@@ -547,8 +547,8 @@ Booking.post('save', function (doc) {
 			timeInOutStatus: isUpdateCO
 				? BookingTimeInOutStatus.Done
 				: isUpdateCI
-				? BookingTimeInOutStatus.DoneIn
-				: BookingTimeInOutStatus.None,
+					? BookingTimeInOutStatus.DoneIn
+					: BookingTimeInOutStatus.None,
 		});
 	}
 
@@ -1329,8 +1329,8 @@ Booking.statics = {
 				if (isVNPhone(guest.phone)) {
 					csStatus.callStatus = BookingCallStatus.NeedCall;
 				} else if (
-					LocalOTAs.Cozrum === booking.otaName ||
-					LocalOTAs.CozrumExtend === booking.otaName ||
+					LocalOTAs.tb === booking.otaName ||
+					LocalOTAs.tbExtend === booking.otaName ||
 					OTAs.OwnerExtend === booking.otaName
 				) {
 					csStatus.guideStatus = BookingGuideStatus.Done;

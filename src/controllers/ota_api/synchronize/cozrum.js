@@ -45,7 +45,7 @@ async function synchronizePrice({ roomTypeId, from, to, ratePlanId, daysOfWeek, 
 		});
 	});
 
-	const Model = mongoose.model('CozrumPrice');
+	const Model = mongoose.model('tbPrice');
 	await Model.bulkWrite(bulks);
 
 	const refPlans = await mongoose.model('RatePlan').findChildRates({
@@ -144,13 +144,13 @@ async function syncDone(syncId) {
 	});
 
 	if (bulks.length) {
-		await mongoose.model('CozrumPrice').bulkWrite(bulks);
+		await mongoose.model('tbPrice').bulkWrite(bulks);
 	}
 }
 
 // async function fetchRoomsToSell({ otaListingInfo, from, to }) {
 // 	const list = await mongoose
-// 		.model('CozrumPrice')
+// 		.model('tbPrice')
 // 		.aggregate()
 // 		.match({
 // 			otaListingId: otaListingInfo.otaListingId,

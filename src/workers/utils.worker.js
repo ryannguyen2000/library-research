@@ -61,7 +61,7 @@ async function onMessage({ type, data, id } = {}) {
 // 		const rs = await require('./index').runWorker({
 // 			type: GENERATE_EXCEL_TO_IMG,
 // 			data: {
-// 				url: 'https://api.cozrum.com/static/upload/finance/24/01/15/paydi_LCT_1705291594924.xlsx',
+// 				url: 'https://api.tb.com/static/upload/finance/24/01/15/paydi_LCT_1705291594924.xlsx',
 // 				folderPath: 'tmp',
 // 			},
 // 		});

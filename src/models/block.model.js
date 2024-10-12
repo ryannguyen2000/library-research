@@ -52,7 +52,7 @@ const FEE_KEYS = {
 	shareExpense: { type: Boolean },
 	reportType: { type: String },
 	version: { type: Number },
-	ignoreDebtPayment: { type: Boolean }, // không trừ doanh thu Cozrum thu vào phần thanh toán
+	ignoreDebtPayment: { type: Boolean }, // không trừ doanh thu tb thu vào phần thanh toán
 	// noReduxManageFee: { type: Boolean }, // không giảm trừ phí quản lí
 	profits: [
 		{
@@ -667,7 +667,7 @@ BlockSchema.statics = {
 				b.otaName === otaName &&
 				(date
 					? (b.startDate ? b.startDate <= moment(date).format('Y-MM-DD') : true) &&
-					  (b.endDate ? b.endDate >= moment(date).format('Y-MM-DD') : true)
+					(b.endDate ? b.endDate >= moment(date).format('Y-MM-DD') : true)
 					: true)
 		);
 	},

@@ -721,7 +721,7 @@ PayoutSchema.statics = {
 			);
 			data.currencyAmount.amount = discount;
 			data.currencyAmount.currency = currency;
-			data.collectorCustomName = `Cozrum's Voucher`;
+			data.collectorCustomName = `tb's Voucher`;
 			data.source = PayoutSources.VOUCHER;
 			delete data.collector;
 		}
@@ -952,29 +952,29 @@ PayoutSchema.statics = {
 			{ _id: ids, state: { $ne: PayoutStates.DELETED } },
 			isConfirmed
 				? {
-						$set: {
-							confirmedBy: userId,
-							confirmedDate: new Date(),
-							state,
+					$set: {
+						confirmedBy: userId,
+						confirmedDate: new Date(),
+						state,
+					},
+					$push: {
+						logs: {
+							by: userId,
+							field: 'confirmedBy',
+							createdAt: new Date(),
+							newData: _.toString(userId),
 						},
-						$push: {
-							logs: {
-								by: userId,
-								field: 'confirmedBy',
-								createdAt: new Date(),
-								newData: _.toString(userId),
-							},
-						},
-				  }
+					},
+				}
 				: {
-						$set: {
-							state,
-						},
-						$unset: {
-							confirmedBy: 1,
-							confirmedDate: 1,
-						},
-				  }
+					$set: {
+						state,
+					},
+					$unset: {
+						confirmedBy: 1,
+						confirmedDate: 1,
+					},
+				}
 		);
 
 		ids.forEach(id => {

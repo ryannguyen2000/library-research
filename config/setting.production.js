@@ -52,13 +52,13 @@ const DB_CONFIG = {
 };
 
 const URL_CONFIG = {
-	SERVER: 'https://api.cozrum.com',
-	SERVER_DOC: 'https://doc.cozrum.com',
-	HOME: 'https://cozrum.com',
-	LETTER: 'https://letter.cozrum.com',
+	SERVER: 'https://api.tb.com',
+	SERVER_DOC: 'https://doc.tb.com',
+	HOME: 'https://tb.com',
+	LETTER: 'https://letter.tb.com',
 	FAMIROOM: 'https://api.famiroom.com',
 	BLOG: 'https://admin.famiroom.com',
-	CMS: 'https://cms.cozrum.com',
+	CMS: 'https://cms.tb.com',
 };
 
 const UPLOAD_CONFIG = {
@@ -119,7 +119,7 @@ const MSAL_CONFIG = {
 		REDIRECT_URI: `${URL_CONFIG.SERVER}/api/v1/ott/email/signInCallBack`,
 	},
 };
-// vacationrentalcozrum@gmail.com
+// vacationrentaltb@gmail.com
 const GMAIL_CONFIG = {
 	AUTH: {
 		clientId: '',

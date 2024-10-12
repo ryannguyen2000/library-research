@@ -21,22 +21,22 @@ async function synchronizePrice({ propertyId, otaListing, from, listing, ratePla
 		return;
 	}
 
-	const cozrumPrice = await models.CozrumPrice.findOne({
+	const tbPrice = await models.tbPrice.findOne({
 		otaListingId,
 		roomTypeId: listing.roomTypeId,
 		ratePlanId,
 		date: from,
 	}).lean();
 
-	if (!cozrumPrice) {
+	if (!tbPrice) {
 		logger.warn(`Facebook synchronize price for otaListingId (${otaListingId}): price does not exist`);
 		return;
 	}
 
 	const data = {
 		id: otaListingId,
-		price: `${cozrumPrice.price} VND`,
-		sale_price: cozrumPrice.promotionPrice ? `${cozrumPrice.promotionPrice} VND` : '',
+		price: `${tbPrice.price} VND`,
+		sale_price: tbPrice.promotionPrice ? `${tbPrice.promotionPrice} VND` : '',
 	};
 	const requests = [{ method: 'UPDATE', data }];
 	await batch(propertyId, requests);

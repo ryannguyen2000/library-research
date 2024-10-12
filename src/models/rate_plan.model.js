@@ -109,7 +109,7 @@ RateSchema.pre('save', async function (next) {
 
 RateSchema.post('save', function () {
 	if (this.$locals.isModifiedRefRate && this.active && this.pricingType === RatePlanPricingTypes.Reference) {
-		mongoose.model('CozrumPrice').syncPriceRefRatePlans(this);
+		mongoose.model('tbPrice').syncPriceRefRatePlans(this);
 	}
 
 	this.syncActiveListing();

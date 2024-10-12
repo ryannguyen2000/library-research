@@ -6,7 +6,7 @@
 // // const { syncPriceListing } = require('@controllers/ota_api/synchronize/grabhotel');
 
 // async function create(otaInfo, data, propertyId, listingIds) {
-// 	const promotion = await models.CozrumPromotion.create({ ...data, listingIds });
+// 	const promotion = await models.tbPromotion.create({ ...data, listingIds });
 
 // 	const meta = {
 // 		id: promotion._id,
@@ -23,7 +23,7 @@
 // 		data.active = true;
 // 		data.listingIds = meta.listingIds;
 
-// 		const promotion = await models.CozrumPromotion.findByIdAndUpdate(meta.id, { $set: data }, { new: true });
+// 		const promotion = await models.tbPromotion.findByIdAndUpdate(meta.id, { $set: data }, { new: true });
 
 // 		// syncPrices(data.listingIds, otaInfo, data.startDate, data.endDate);
 
@@ -67,7 +67,7 @@
 // 		return;
 // 	}
 
-// 	await models.CozrumPromotion.findByIdAndDelete(meta.id);
+// 	await models.tbPromotion.findByIdAndDelete(meta.id);
 // 	// syncPrices(meta.listingIds, otaInfo, data.startDate, data.endDate);
 
 // 	return {

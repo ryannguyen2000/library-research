@@ -32,7 +32,7 @@ port: 8080
 pm2 start ecosystem.config.js --env production
 
 Docker
-sudo docker build -t cozrum-api .
-sudo docker run -i -d --rm --init -e NODE_ENV=production --log-driver local --net=host --name=cozrum-api cozrum-api
+sudo docker build -t.
+sudo docker run -i -d --rm --init -e NODE_ENV=production --log-driver local --net=host
 
-docker container logs cozrum-api
+docker container logs

@@ -41,7 +41,7 @@ function createJWT({ serectKey, partnerCode, expiresIn, apiKey }) {
 	const header = {
 		typ: 'JWT',
 		alg: 'HS256',
-		cty: 'cozrum-api;v=1',
+		cty: 'tb-api;v=1',
 	};
 
 	return jwt.sign(payload, serectKey, { header, algorithm: 'HS256', expiresIn });
@@ -234,7 +234,7 @@ function formatMoney(value) {
 }
 
 function getSMSText(doc) {
-	// "TK 223568899 GD: +500,000VND 26/05/23 10:41 SD:500,000VND ND: CTY CP DICH VU CONG NGHE COZRUM chu yen tien vao tk MBbank Trace 090715 223568899"
+	// "TK 223568899 GD: +500,000VND 26/05/23 10:41 SD:500,000VND ND: CTY CP DICH VU CONG NGHE tb chu yen tien vao tk MBbank Trace 090715 223568899"
 	const arr = [
 		`TK ${doc.accountNo}`,
 		`GD: ${doc.meta.amount >= 0 ? '+' : '-'}${formatMoney(doc.meta.amount)} ${moment(doc.tranTime).format(
@@ -555,7 +555,7 @@ async function makeTranser({
 		transferType,
 		bankCode: transferType === 'IBPS' ? creditAccount.bankId.citadCode : creditAccount.bankId.bin,
 		transferAmount,
-		remark: `COZRUM CHUYEN TIEN ${transactionId} ${remark}`,
+		remark: `tb CHUYEN TIEN ${transactionId} ${remark}`,
 	};
 
 	const { privateKey } = serviceAccount.configs;
@@ -588,8 +588,8 @@ async function makeTranser({
 			res.data && res.data.status
 				? res.data.status
 				: UNKNOWN_ERROR_CODE.includes(res.errorCode)
-				? TransactionStatus.PROCESSING
-				: TransactionStatus.ERROR,
+					? TransactionStatus.PROCESSING
+					: TransactionStatus.ERROR,
 		statusDescription: JSON.stringify({ ...res, headers: undefined }),
 		statusText: res.statusText,
 		reqData: body,

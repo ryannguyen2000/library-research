@@ -1,8 +1,8 @@
 {
 	"info": {
 		"_postman_id": "d50bb8e3-2729-4c2f-aef7-8e2f1ccef7fd",
-		"name": "Cozrum",
-		"description": "Cozrum's API<br/>\nCác Biến sử dụng trong tài liệu <br/>\n**{{baseUrL}}** base URL ví dụ \"http://localhost:8080/api/v1/\" <br>\n**{{_id}}** Id của đối tượng, ví dụ \"5e7475997e4363391c6e891a\" <br>\n**{{token}}** x-access-token được lấy khi user login. Ví dụ \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im9yZGVyIjp7Im1vbmRheSI6MiwidHVlc2RheSI6MCwid2VkbmVzZGF5IjowLCJ0aHVyc2RheSI6MCwiZnJpZGF5IjowLCJzYXR1cmRheSI6MCwic3VuZGF5IjowfSwiZW5hYmxlIjp0cnVlLCJyZXZva2UiOmZhbHNlLCJfaWQiOiI1YmQ5NzlkMTZjZWQyZTg2OGNmZTc3YjUiLCJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiIxYmY1MWVkMjZlZTgxZTVjNTE2MjRiODUzMTZjOWYyMTI4YjU2NTIxNDZiZDhiMmY3YzUxMzZkYmYyNjE2MTJkIiwicm9sZSI6ImFkbWluIiwibmFtZSI6IkFkbWluIiwidXBkYXRlZEF0IjoiMjAyMC0wMy0yMFQwMjozMzowMi45MjFaIiwiYWRkcmVzcyI6IkhDTSIsImNyZWF0ZWRBdCI6IjIwMTktMTItMTZUMTA6NDY6MzEuOTExWiJ9LCJpYXQiOjE1ODQ2NzE2NTQsImV4cCI6MTU4NTk2NzY1NH0.T08lZb_yrSBoummz10pBxNQ_MrnC25rpt0EBFGObtE4\"",
+		"name": "tb",
+		"description": "tb's API<br/>\nCác Biến sử dụng trong tài liệu <br/>\n**{{baseUrL}}** base URL ví dụ \"http://localhost:8080/api/v1/\" <br>\n**{{_id}}** Id của đối tượng, ví dụ \"5e7475997e4363391c6e891a\" <br>\n**{{token}}** x-access-token được lấy khi user login. Ví dụ \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im9yZGVyIjp7Im1vbmRheSI6MiwidHVlc2RheSI6MCwid2VkbmVzZGF5IjowLCJ0aHVyc2RheSI6MCwiZnJpZGF5IjowLCJzYXR1cmRheSI6MCwic3VuZGF5IjowfSwiZW5hYmxlIjp0cnVlLCJyZXZva2UiOmZhbHNlLCJfaWQiOiI1YmQ5NzlkMTZjZWQyZTg2OGNmZTc3YjUiLCJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiIxYmY1MWVkMjZlZTgxZTVjNTE2MjRiODUzMTZjOWYyMTI4YjU2NTIxNDZiZDhiMmY3YzUxMzZkYmYyNjE2MTJkIiwicm9sZSI6ImFkbWluIiwibmFtZSI6IkFkbWluIiwidXBkYXRlZEF0IjoiMjAyMC0wMy0yMFQwMjozMzowMi45MjFaIiwiYWRkcmVzcyI6IkhDTSIsImNyZWF0ZWRBdCI6IjIwMTktMTItMTZUMTA6NDY6MzEuOTExWiJ9LCJpYXQiOjE1ODQ2NzE2NTQsImV4cCI6MTU4NTk2NzY1NH0.T08lZb_yrSBoummz10pBxNQ_MrnC25rpt0EBFGObtE4\"",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [

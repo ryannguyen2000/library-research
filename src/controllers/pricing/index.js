@@ -424,7 +424,7 @@ async function syncLocalPromotionPrice({ page, from, to }) {
 
 		await ratePlans.asyncForEach(ratePlan => {
 			return ratePlan.roomTypeIds.asyncMap(roomTypeId =>
-				models.CozrumPrice.calcPromotionPrice({
+				models.tbPrice.calcPromotionPrice({
 					roomTypeId,
 					ratePlanId: ratePlan._id,
 					from,

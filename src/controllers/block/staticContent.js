@@ -50,7 +50,7 @@ async function syncPropertyContent(block) {
 		OTAs: {
 			$elemMatch: {
 				active: true,
-				otaName: OTAs.CozrumWeb,
+				otaName: OTAs.tbWeb,
 			},
 		},
 	}).select('roomIds url OTAs');
@@ -75,7 +75,7 @@ async function syncPropertyContent(block) {
 						);
 
 						if (mapListing) {
-							const ota = mapListing.getOTA(OTAs.CozrumWeb);
+							const ota = mapListing.getOTA(OTAs.tbWeb);
 							roomTypeId.slug = mapListing.url;
 							roomTypeId.otaListingId = ota.otaListingId;
 							roomTypeId.displayName = ota.otaListingName;
@@ -125,7 +125,7 @@ async function syncPropertyContent(block) {
 		let otaListingId;
 
 		if (mapListing) {
-			otaListingId = mapListing.getOTA(OTAs.CozrumWeb).otaListingId;
+			otaListingId = mapListing.getOTA(OTAs.tbWeb).otaListingId;
 
 			if (roomType.stags) {
 				bulksUpdate.push({

@@ -5,7 +5,7 @@ const { PromotionType } = require('@utils/const');
 const models = require('@models');
 
 async function create({ data, listingIds, ratePlanIds, roomTypeIds }) {
-	const promotion = await models.CozrumPromotion.create({ ...data, listingIds, ratePlanIds });
+	const promotion = await models.tbPromotion.create({ ...data, listingIds, ratePlanIds });
 
 	await syncPromotionPrice(listingIds, ratePlanIds, data.startDate, data.endDate);
 
@@ -33,7 +33,7 @@ async function update({ listingIds, ratePlanIds, data, meta, isSet, roomTypeIds 
 		// 	data.ratePlanIds = allRatePlanIds;
 		// }
 
-		await models.CozrumPromotion.updateOne({ _id: meta.id }, { $set: data }, { upsert: true });
+		await models.tbPromotion.updateOne({ _id: meta.id }, { $set: data }, { upsert: true });
 
 		await syncPromotionPrice(allListingIds, allRatePlanIds, data.startDate, data.endDate);
 
@@ -65,7 +65,7 @@ async function set({ listingIds, ratePlanIds, data, meta, roomTypeIds }) {
 }
 
 async function clear({ listingIds: removeListingIds, ratePlanIds, roomTypeIds, data, meta }) {
-	await models.CozrumPromotion.updateOne({ _id: meta.id }, { active: false });
+	await models.tbPromotion.updateOne({ _id: meta.id }, { active: false });
 
 	await syncPromotionPrice(
 		_.uniq([...removeListingIds, ...meta.listingIds]),
@@ -144,7 +144,7 @@ async function syncPromotionPrice(otaListingIds, ratePlanIds, from, to) {
 
 	await listings.asyncMap(listing =>
 		ratePlanIds.asyncMap(ratePlanId =>
-			models.CozrumPrice.calcPromotionPrice({
+			models.tbPrice.calcPromotionPrice({
 				roomTypeId: listing.roomTypeId,
 				ratePlanId,
 				from,

@@ -164,7 +164,7 @@ const Settings = {
 	},
 	DefaultPayRemark: {
 		key: 'DefaultPayRemark',
-		value: 'COZRUM CHUYEN KHOAN',
+		value: 'tb CHUYEN KHOAN',
 		title: 'ND chuyển khoản mặc định nếu để trống',
 	},
 	NeedApproveForUpdateBookingPrice: {

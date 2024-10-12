@@ -151,15 +151,15 @@ function getRealRevenueAndCzDebt({ revenue, dateTxt, language, config }) {
 				name: `${textContent.UTILS.ownerRevenue[language]} ${dateTxt}`,
 				total: ownerTotal,
 			},
-			cozrum: {
-				name: `${textContent.UTILS.cozrumRevenue[language]} ${dateTxt}`,
+			tb: {
+				name: `${textContent.UTILS.tbRevenue[language]} ${dateTxt}`,
 				total: czTotal,
 			},
 		},
 	};
 
 	const czDebt = {
-		name: `${ROMAN_INDEX}. ${textContent.OVERVIEW.cozrumDebt.name[language]}`.toUpperCase(),
+		name: `${ROMAN_INDEX}. ${textContent.OVERVIEW.tbDebt.name[language]}`.toUpperCase(),
 		total: receivable + uncollectedDebt,
 		data: {
 			receivable: {
@@ -263,9 +263,9 @@ function getPrepaid({ feeGroupReport, fee, revenue, OTATaxFee, OTAFeeTotal, lang
 		...(isSonataReportType
 			? undefined
 			: {
-					c1: _.sumBy(arr, 'c1') || 0,
-					c2: _.sumBy(arr, 'c2') || 0,
-			  }),
+				c1: _.sumBy(arr, 'c1') || 0,
+				c2: _.sumBy(arr, 'c2') || 0,
+			}),
 		total: _.sumBy(arr, 'total') || 0,
 		data: prepaidData,
 	};
@@ -275,7 +275,7 @@ function getPrepaid({ feeGroupReport, fee, revenue, OTATaxFee, OTAFeeTotal, lang
 			const ltRes = revenue.revenues.data.filter(i => i.serviceType === Services.Month);
 			const stRes = revenue.revenues.data.filter(i => i.serviceType !== Services.Month);
 
-			// List Res cozrum thu
+			// List Res tb thu
 			// const allRes = [
 			// 	..._.get(revenue, 'revenues.data', []),
 			// 	..._.get(revenue, 'otherRevenues.data', []),
@@ -343,7 +343,7 @@ function getNETRevenue({ revenue, prepaid, realRevenue, OTAFee, language, dateTx
 	let NETRevenue;
 
 	if (config.reportType === REPORT_TYPE.SONATA) {
-		const revenueTotal = _.get(realRevenue, 'data.owner.total') + _.get(realRevenue, 'data.cozrum.total');
+		const revenueTotal = _.get(realRevenue, 'data.owner.total') + _.get(realRevenue, 'data.tb.total');
 		const netRevenueTotal = revenueTotal - _.get(prepaid, 'total', 0) || 0;
 
 		NETRevenue = {
@@ -411,17 +411,15 @@ function getManageFee({ config, NETRevenue, language }) {
 		total: shortTerm + longTerm,
 		data: {
 			shortTerm: {
-				name: `${textContent.OVERVIEW.manageFee.data[language]} (${cShortTerm * 100}% ${
-					textContent.UTILS.shortTermNetRevenue[language]
-				})`,
+				name: `${textContent.OVERVIEW.manageFee.data[language]} (${cShortTerm * 100}% ${textContent.UTILS.shortTermNetRevenue[language]
+					})`,
 				c1: '',
 				c2: '',
 				total: shortTerm,
 			},
 			longTerm: {
-				name: `${textContent.OVERVIEW.manageFee.data[language]} (${cLongTerm * 100}% ${
-					textContent.UTILS.longTermNetRevenue[language]
-				})`,
+				name: `${textContent.OVERVIEW.manageFee.data[language]} (${cLongTerm * 100}% ${textContent.UTILS.longTermNetRevenue[language]
+					})`,
 				c1: '',
 				c2: '',
 				total: longTerm,
@@ -432,7 +430,7 @@ function getManageFee({ config, NETRevenue, language }) {
 
 function getProfit({ prepaid, realRevenue, config, dateTxt, language, costRate }) {
 	const expenseAmount = prepaid.total || 0;
-	const revenueTotal = _.get(realRevenue, 'data.cozrum.total', 0) + _.get(realRevenue, 'data.owner.total', 0);
+	const revenueTotal = _.get(realRevenue, 'data.tb.total', 0) + _.get(realRevenue, 'data.owner.total', 0);
 	const netRev = revenueTotal - expenseAmount;
 
 	let czProfit;
@@ -462,7 +460,7 @@ function getProfit({ prepaid, realRevenue, config, dateTxt, language, costRate }
 		c2: '',
 		total: czProfit + ownerProfit,
 		data: {
-			cozrum: {
+			tb: {
 				name: `${textContent.OVERVIEW.shareProfit.c1[language]} ${dateTxt}`,
 				c1: '',
 				c2: '',
@@ -480,15 +478,15 @@ function getProfit({ prepaid, realRevenue, config, dateTxt, language, costRate }
 
 function getPayment({ prepaid, realRevenue, profit, dateTxt, costRate, language, config }) {
 	const czAmount = _.round(
-		_.get(profit, 'data.cozrum.total', 0) +
-			_.get(prepaid, 'cz', 0) -
-			(config.ignoreDebtPayment ? 0 : _.get(realRevenue, 'data.cozrum.total', 0))
+		_.get(profit, 'data.tb.total', 0) +
+		_.get(prepaid, 'cz', 0) -
+		(config.ignoreDebtPayment ? 0 : _.get(realRevenue, 'data.tb.total', 0))
 	);
 
 	const data = {};
 
 	if (costRate) {
-		data.cozrumEmployeeExpenses = {
+		data.tbEmployeeExpenses = {
 			name: `${textContent.OVERVIEW.payment.c3[language]} ${dateTxt}`,
 			c1: '',
 			c2: '',
@@ -496,7 +494,7 @@ function getPayment({ prepaid, realRevenue, profit, dateTxt, costRate, language,
 		};
 	}
 
-	data.cozrum = {
+	data.tb = {
 		name: `${textContent.OVERVIEW.payment.c1[language]} ${dateTxt}`,
 		c1: '',
 		c2: '',
@@ -529,7 +527,7 @@ function getCostRate({ prepaid, dateTxt, language, feeGroupReport }) {
 		total,
 		totalCost,
 		data: {
-			cozrum: {
+			tb: {
 				name: `${textContent.OVERVIEW.czCostRate.name[language]} ${dateTxt}`,
 				c1: '',
 				c2: '',
@@ -666,14 +664,14 @@ function getOverview({ revenue, hostRevenues, fee, from, to, config, feeGroupRep
 		};
 	}
 
-	// Real revenue/thuc trang thu va Debt/cong no cozrum
+	// Real revenue/thuc trang thu va Debt/cong no tb
 	const { realRevenue, czDebt } = getRealRevenueAndCzDebt({
 		revenue,
 		dateTxt,
 		language,
 		config,
 	});
-	data.czDebt = czDebt; // Cong no cozrum
+	data.czDebt = czDebt; // Cong no tb
 	data.realRevenue = realRevenue; // Thuc trang thu
 
 	if (isSonataReportType) {
@@ -745,11 +743,11 @@ function getOverview({ revenue, hostRevenues, fee, from, to, config, feeGroupRep
 
 		/*
 		Final Revenue
-			- CT1: 
+			- CT1:
 				c1: Doanh thu báo cáo thuế - thuế TNCN
-				c2: Thu nhập thực chủ nhà - thu chi hộ/trả trước của Cozrum - c1 + phần thu khác chủ nhà
-			- CT2: 
-				c1: Thu nhập thực chủ nhà - thu chi hộ/trả trước của Cozrum + phần thu khác chủ nhà
+				c2: Thu nhập thực chủ nhà - thu chi hộ/trả trước của tb - c1 + phần thu khác chủ nhà
+			- CT2:
+				c1: Thu nhập thực chủ nhà - thu chi hộ/trả trước của tb + phần thu khác chủ nhà
 				c2: 0
 		*/
 		const { shortTerm, longTerm, service } = data.NETRevenue.data;

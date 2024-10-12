@@ -155,7 +155,7 @@ async function calcTax(flows, from, to) {
 	const bankFees = {
 		[CASH_FLOW_OBJECT.REFUND]: 1,
 		[CASH_FLOW_OBJECT.COMMISSION_OTA]: 1,
-		[CASH_FLOW_OBJECT.COMMISSION_COZRUM]: 1,
+		[CASH_FLOW_OBJECT.COMMISSION_tb]: 1,
 		[CASH_FLOW_OBJECT.TRANSACTION_FEE]: 1,
 		[CASH_FLOW_OBJECT.BACKUP_CASH_FUND]: 1,
 	};
@@ -230,7 +230,7 @@ async function calcExpense({ blockFlows, blocks, period, blockObjects }) {
 		const sellingExpKeys = [
 			CASH_FLOW_OBJECT.COMMISSION_OTA,
 			CASH_FLOW_OBJECT.TRANSACTION_FEE,
-			CASH_FLOW_OBJECT.COMMISSION_COZRUM,
+			CASH_FLOW_OBJECT.COMMISSION_tb,
 		];
 		const sellingExps = bflows.filter(f => sellingExpKeys.includes(f._id.destination));
 		const expBackup = sellingExps.filter(
@@ -321,8 +321,8 @@ function autoTransfer({ objects, value, to }) {
 			const amount = isLastIndex
 				? diff
 				: diff > 0
-				? Math.min(obj.remaining, diff)
-				: Math.max(obj.remaining, diff);
+					? Math.min(obj.remaining, diff)
+					: Math.max(obj.remaining, diff);
 
 			newFlows.push({
 				from,
@@ -446,7 +446,7 @@ function getGroupType(objectName) {
 		CASH_FLOW_OBJECT.IGNORE_PRICE,
 		CASH_FLOW_OBJECT.GUEST,
 		CASH_FLOW_OBJECT.COMMISSION_OTA,
-		CASH_FLOW_OBJECT.COMMISSION_COZRUM,
+		CASH_FLOW_OBJECT.COMMISSION_tb,
 		CASH_FLOW_OBJECT.B2B,
 	];
 

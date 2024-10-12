@@ -4,7 +4,7 @@ const testCollections = [
 		account: 'hoangdang',
 		otaName: 'agoda',
 		blockId: '5c09e9c04d46ed49f9aacbb8',
-		propertyName: 'Cozrum Homes - Kena House',
+		propertyName: 'tb Homes - Kena House',
 		transactions: [
 			{
 				amountToSale: 0,
@@ -223,7 +223,7 @@ const testCollections = [
 		account: 'hoangdang',
 		otaName: 'agoda',
 		blockId: '5cd590f02ca5fc403d7e0240',
-		propertyName: 'Cozrum Homes - June Corner',
+		propertyName: 'tb Homes - June Corner',
 		transactions: [
 			{
 				amountToSale: 1295854,
@@ -422,10 +422,10 @@ const testCollections = [
 	},
 	{
 		propertyId: '97395562',
-		account: 'cozrum',
+		account: 'tb',
 		otaName: 'ctrip',
 		blockId: '5cf49075617e1b2846f21f14',
-		propertyName: 'Cozrum Homes - June Corner',
+		propertyName: 'tb Homes - June Corner',
 		transactions: [
 			{
 				otaId: '3070752252',
@@ -563,7 +563,7 @@ const testCollections = [
 		bankAccountInfo: {
 			bankName: 'Vietnam Technological and Commercial Joint Stock Bank',
 			cardNo: '************1017',
-			accountName: 'CONG TY CO PHAN DICH VU CONG NGHE COZRUM',
+			accountName: 'CONG TY CO PHAN DICH VU CONG NGHE tb',
 		},
 		date: '2024-01-15',
 		status: 'awaiting',

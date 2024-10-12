@@ -63,7 +63,7 @@ function isIgnoreSMS(text, phone) {
 	return (
 		phone === SMSBankingPhones[2] &&
 		(/VIMO(\d{8,10})_PYO_(\d{16,18})/.test(text) ||
-			/(HBTraveloka|CTY TNHH TRAVELOKA VN|COZRUM CHI LUONG|AGODA COMPANY PTE|HOSC _ VNTRIP|LUXVN payment)/i.test(
+			/(HBTraveloka|CTY TNHH TRAVELOKA VN|tb CHI LUONG|AGODA COMPANY PTE|HOSC _ VNTRIP|LUXVN payment)/i.test(
 				text
 			))
 	);

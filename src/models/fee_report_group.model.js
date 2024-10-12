@@ -18,7 +18,7 @@ const FeeReportGroupSchema = new Schema(
 					vi: String,
 					en: String,
 				},
-				costRate: Number, // tính vào tỉ lệ chi phí của Cozrum
+				costRate: Number, // tính vào tỉ lệ chi phí của tb
 				categories: [{ type: ObjectId, ref: 'PayoutCategory' }],
 				hiddenOnNull: { type: Boolean, default: false },
 				isOther: Boolean,

@@ -199,10 +199,10 @@ async function checkRevneueStream() {
 	});
 
 	// const otaNames = [
-	// 	'cozrum.com',
+	// 	'tb.com',
 	// 	'facebook',
 	// 	'zalo',
-	// 	// 'cozrum_extend',
+	// 	// 'tb_extend',
 	// 	'instagram',
 	// 	'whatsapp',
 	// 	'zalo_oa',
@@ -318,10 +318,10 @@ async function syncCommission(page = 1) {
 	const slimit = 100;
 
 	const otaName = [
-		'cozrum.com',
+		'tb.com',
 		'facebook',
 		'zalo',
-		'cozrum_extend',
+		'tb_extend',
 		'instagram',
 		'whatsapp',
 		'zalo_oa',
@@ -373,10 +373,10 @@ async function syncRevenueStreams(page = 1) {
 	];
 
 	// const otaName = [
-	// 	'cozrum.com',
+	// 	'tb.com',
 	// 	'facebook',
 	// 	'zalo',
-	// 	'cozrum_extend',
+	// 	'tb_extend',
 	// 	'instagram',
 	// 	'whatsapp',
 	// 	'zalo_oa',
@@ -530,7 +530,7 @@ async function generateBlockConfigs() {
 		const status = [BookingStatus.CONFIRMED, BookingStatus.NOSHOW];
 
 		const addComTransactions = (OTAProperty, streams) => {
-			if (OTAProperty.commission && otaObjs[OTAProperty.otaName].group === 'COZRUM_MARKETING') {
+			if (OTAProperty.commission && otaObjs[OTAProperty.otaName].group === 'tb_MARKETING') {
 				const comBefore09 = 15;
 				const comAfter09 = 16.2;
 				const com1 = withVAT(comBefore09);
@@ -702,7 +702,7 @@ async function generateBlockConfigs() {
 			}
 
 			OTAProperties.forEach(OTAProperty => {
-				if (OTAProperty.commission && otaObjs[OTAProperty.otaName].group === 'COZRUM_MARKETING') {
+				if (OTAProperty.commission && otaObjs[OTAProperty.otaName].group === 'tb_MARKETING') {
 					revenueStreams[2] = revenueStreams[2] || {
 						source: REPORT_STREAM_SOURCES.CZ,
 						type: REVENUE_STREAM_TYPES.BY_TRANSACTION,
@@ -1490,7 +1490,7 @@ async function guestStats() {
 // 	xlsx.utils.book_append_sheet(workBook, ws, 'Bookings');
 
 // 	const fileName = `${from.toDateMysqlFormat()}_${to.toDateMysqlFormat()}.xlsx`;
-// 	_.set(workBook, 'Props.Author', 'Cozrum');
+// 	_.set(workBook, 'Props.Author', 'tb');
 // 	const TMP_FOLDER = 'tmp';
 // 	const filePath = `${TMP_FOLDER}/${fileName}`;
 

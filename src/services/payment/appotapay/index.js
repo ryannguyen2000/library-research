@@ -72,7 +72,7 @@ async function createPaymentUrl(data) {
 	const endpoint = `${config.endpoint}/api/v1/orders/payment/bank`;
 
 	const webRedirectUrl = `${config.returnUrl}/${otaBookingId}`;
-	const mobileRedirectUrl = `cozrum://payment-successful/${otaBookingId}/${otaName}/${paymentRef}/${PAYMENT_NAME}`;
+	const mobileRedirectUrl = `tb://payment-successful/${otaBookingId}/${otaName}/${paymentRef}/${PAYMENT_NAME}`;
 
 	const redirectUrl = platform === Platform.App ? mobileRedirectUrl : host || webRedirectUrl;
 

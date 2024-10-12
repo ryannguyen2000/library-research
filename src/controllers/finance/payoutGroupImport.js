@@ -208,7 +208,7 @@ function getVietcombankData(xlsx) {
 	const sheet = xlsx.Sheets[sheetName];
 	const data = [];
 
-	if (sheetName.endsWith('GDTHECOZRUM')) {
+	if (sheetName.endsWith('GDTHEtb')) {
 		let startRow = 4;
 
 		while (true) {

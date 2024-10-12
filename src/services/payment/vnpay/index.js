@@ -30,7 +30,7 @@ async function createPaymentUrl(data) {
 
 	const returnUrl =
 		platform === Platform.App
-			? `cozrum://payment-successful/${otaBookingId}/${otaName}/${paymentRef}/${PAYMENT_NAME}`
+			? `tb://payment-successful/${otaBookingId}/${otaName}/${paymentRef}/${PAYMENT_NAME}`
 			: host || `${config.returnUrl}/${otaBookingId}`;
 
 	let vnp_Params = {

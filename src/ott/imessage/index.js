@@ -192,7 +192,7 @@ async function getFilePath(sender, phone, url) {
 		requestUploadFile(sender, phone, url);
 	}
 
-	return URL_CONFIG.SERVER + p.replace('/home/api/cozrum/publish/doc/ott', OTT_CONFIG.STATIC_PATH);
+	return URL_CONFIG.SERVER + p.replace('/home/api/tb/publish/doc/ott', OTT_CONFIG.STATIC_PATH);
 }
 
 async function parseMessage(sender, phone, message) {
@@ -234,7 +234,7 @@ async function sendMessage(sender, phone, text = '', attachments) {
 		throw new ThrowReturn(e);
 	} finally {
 		attachments.forEach(f => {
-			fs.unlink(f.localPath, () => {});
+			fs.unlink(f.localPath, () => { });
 		});
 	}
 }

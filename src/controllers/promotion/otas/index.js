@@ -3,7 +3,7 @@ const fs = require('fs');
 function loadOTAs() {
 	if (global.isDev) {
 		return {
-			cozrum: require('./cozrum.promotion'),
+			tb: require('./tb.promotion'),
 			agoda: require('./agoda.promotion'),
 		};
 	}

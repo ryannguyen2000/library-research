@@ -175,7 +175,7 @@ async function sendEmailConfirmation(bookingId) {
 		attachments: [
 			{
 				filename: 'logo.png',
-				path: 'https://cozrum.com/static/images/cozrum/Cozrum10.png',
+				path: 'https://tb.com/static/images/tb/tb10.png',
 				cid: 'logo', // same cid value as in the html img src
 			},
 		],
@@ -222,14 +222,14 @@ async function getContentForUnpaid(booking) {
 
 	const arrText = block.isSelfCheckin
 		? [
-				`Cozrum will be sent 1 day prior to the check-in date. Please check your message (Zalo, Whatsapp or Imess) to get the check-in instruction. Kindly reach our Hotline at ${hotline} for check-in instruction at Cozrum Homes before ${timeEnd}PM on check in date. Thank you\n`,
-				`Do căn hộ áp dụng quy trình tự nhận phòng nên Quý Khách vui lòng liên hệ Hotline: ${hotline} để được hướng dẫn chi tiết trước ${timeEnd} tối của ngày nhận phòng. Xin cảm ơn!`,
-		  ]
+			`tb will be sent 1 day prior to the check-in date. Please check your message (Zalo, Whatsapp or Imess) to get the check-in instruction. Kindly reach our Hotline at ${hotline} for check-in instruction at tb Homes before ${timeEnd}PM on check in date. Thank you\n`,
+			`Do căn hộ áp dụng quy trình tự nhận phòng nên Quý Khách vui lòng liên hệ Hotline: ${hotline} để được hướng dẫn chi tiết trước ${timeEnd} tối của ngày nhận phòng. Xin cảm ơn!`,
+		]
 		: [
-				`Kindly contact 24/7 Receptionist of ${block.info.name} via hotline number: ${hotline} for supporting.`,
-				`Add: ${block.info.address_en || block.info.address}.`,
-				`Để được hỗ trợ, Quý Khách vui lòng liên hệ lễ tân 24/7 của ${block.info.name} qua hotline: ${hotline}.`,
-		  ];
+			`Kindly contact 24/7 Receptionist of ${block.info.name} via hotline number: ${hotline} for supporting.`,
+			`Add: ${block.info.address_en || block.info.address}.`,
+			`Để được hỗ trợ, Quý Khách vui lòng liên hệ lễ tân 24/7 của ${block.info.name} qua hotline: ${hotline}.`,
+		];
 
 	return arrText.join('\n');
 }
@@ -284,7 +284,7 @@ async function sendEmailConfirmationOTA(booking) {
 	const mailOptions = {
 		from: config.email,
 		to: options.to,
-		subject: `Cozrum Checkin Guide for Reservation ID ${booking.otaBookingId}`,
+		subject: `tb Checkin Guide for Reservation ID ${booking.otaBookingId}`,
 		text: textEmail,
 	};
 

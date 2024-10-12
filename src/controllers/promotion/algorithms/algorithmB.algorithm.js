@@ -8,7 +8,7 @@
 // 		rooms: [],
 // 		active: true,
 // 		modifiled: true,
-// 		cozrum: {
+// 		tb: {
 // 			secretDeal: false,
 // 			maxPromo,
 // 			elasticity,

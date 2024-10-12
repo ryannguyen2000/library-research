@@ -853,7 +853,7 @@ CashFlowSchema.statics = {
 
 							const destination = OTAsListingConfig[booking.otaName]
 								? CASH_FLOW_OBJECT.COMMISSION_OTA
-								: CASH_FLOW_OBJECT.COMMISSION_COZRUM;
+								: CASH_FLOW_OBJECT.COMMISSION_tb;
 
 							if (isCharged) {
 								flow2.push([
@@ -998,19 +998,19 @@ CashFlowSchema.statics = {
 	async setBookingFlow({ otaName, otaBookingId, bookingId }) {
 		const filter = bookingId
 			? {
-					$or: [
-						{
-							_id: bookingId,
-						},
-						{
-							relativeBookings: bookingId,
-						},
-					],
-			  }
+				$or: [
+					{
+						_id: bookingId,
+					},
+					{
+						relativeBookings: bookingId,
+					},
+				],
+			}
 			: {
-					otaName,
-					otaBookingId,
-			  };
+				otaName,
+				otaBookingId,
+			};
 
 		const bookings = await this.model('Booking')
 			.find(filter)

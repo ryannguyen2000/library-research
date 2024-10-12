@@ -266,7 +266,7 @@ async function submitReview({
 	bookingId,
 	reviewId,
 	feedback,
-	privateFb = 'Thank you for staying at Cozrum Homes!',
+	privateFb = 'Thank you for staying at tb Homes!',
 	cleanliness = 5,
 	communication = 5,
 	respect = 5,

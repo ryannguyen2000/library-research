@@ -31,7 +31,7 @@ async function createPaymentUrl(data) {
 
 	const returnUrl =
 		platform === Platform.App
-			? `cozrum://payment-successful/${otaBookingId}/${otaName}/${paymentRef}/${PAYMENT_NAME}`
+			? `tb://payment-successful/${otaBookingId}/${otaName}/${paymentRef}/${PAYMENT_NAME}`
 			: host || `${config.returnUrl}/${otaBookingId}`;
 
 	const body = {
@@ -95,12 +95,12 @@ async function checkPaymentResult(neo_Params, fromAPI) {
 		if (
 			fromAPI ||
 			_.toUpper(neo_Params.neo_SecureHash) ===
-				_.toUpper(
-					createHash(
-						_.omit(neo_Params, ['neo_SecureHash', 'neo_TransAmount', 'neo_ExtData', 'neo_PaymentMethod']),
-						config.secretKey
-					)
+			_.toUpper(
+				createHash(
+					_.omit(neo_Params, ['neo_SecureHash', 'neo_TransAmount', 'neo_ExtData', 'neo_PaymentMethod']),
+					config.secretKey
 				)
+			)
 		) {
 			let rspCode = fromAPI ? neo_Params.neo_ResponseCode : neo_Params.neo_ResponseCode;
 

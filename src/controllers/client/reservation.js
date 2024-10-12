@@ -79,7 +79,7 @@ async function inquiry(body, language) {
 		(await models.Listing.findBySlugOrId(listingId)
 			.populate('blockId', 'groupIds')
 			.populate('roomTypeId', 'roomIds'));
-	const ota = listing && listing.getOTA(LocalOTAs.CozrumWeb);
+	const ota = listing && listing.getOTA(LocalOTAs.tbWeb);
 
 	if (!ota) {
 		return throwError(ERROR_CODE.NOT_FOUND_LISTING, language);
@@ -158,7 +158,7 @@ async function inquiry(body, language) {
 	const otaBookingId = await genBookingCode();
 
 	const data = {
-		otaName: OTAs.CozrumWeb,
+		otaName: OTAs.tbWeb,
 		otaBookingId,
 		otaListingId: ota.otaListingId,
 		from,
@@ -174,7 +174,7 @@ async function inquiry(body, language) {
 			fullName,
 			email,
 			phone,
-			ota: OTAs.CozrumWeb,
+			ota: OTAs.tbWeb,
 			otaId: phone,
 		},
 		thread: {
@@ -203,7 +203,7 @@ async function inquiry(body, language) {
 		await booking.addHistory({ description: `Guest's note: ${message}` });
 	}
 
-	return { bookingId: otaBookingId, otaName: OTAs.CozrumWeb, booking };
+	return { bookingId: otaBookingId, otaName: OTAs.tbWeb, booking };
 }
 
 async function inquiryDetail(id, language) {
@@ -227,7 +227,7 @@ async function inquiryDetail(id, language) {
 	_.unset(booking, 'payment.bookings');
 
 	if (booking.listingId) {
-		const localOTA = booking.listingId.OTAs.find(o => o.active && o.otaName === OTAs.CozrumWeb);
+		const localOTA = booking.listingId.OTAs.find(o => o.active && o.otaName === OTAs.tbWeb);
 		booking.listingId.name = localOTA && localOTA.otaListingName;
 		_.unset(booking, 'listingId.OTAs');
 	}

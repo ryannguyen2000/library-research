@@ -32,25 +32,25 @@ function bookingCalc({
 	const rate =
 		calcType === PromotionCalcType.Multi
 			? {
-					nonPromo: (1 - fixedDeal) * _basicDeal,
-					nonPromoNonRefund: (1 - fixedDeal) * _basicDeal * (1 - nonRefund),
-					earlyBooker: (1 - fixedDeal) * _earlyBooker,
-					earlyBookerNonRefund: (1 - fixedDeal) * _earlyBooker * (1 - nonRefund),
-					lastMinuteDeal: (1 - fixedDeal) * _lastMinute,
-					lastMinuteNonRefund: (1 - fixedDeal) * _lastMinute * (1 - nonRefund),
-					flashSaleDeal: (1 - fixedDeal) * _flashSale,
-					flashSaleNonRefund: (1 - fixedDeal) * _flashSale * (1 - nonRefund),
-			  }
+				nonPromo: (1 - fixedDeal) * _basicDeal,
+				nonPromoNonRefund: (1 - fixedDeal) * _basicDeal * (1 - nonRefund),
+				earlyBooker: (1 - fixedDeal) * _earlyBooker,
+				earlyBookerNonRefund: (1 - fixedDeal) * _earlyBooker * (1 - nonRefund),
+				lastMinuteDeal: (1 - fixedDeal) * _lastMinute,
+				lastMinuteNonRefund: (1 - fixedDeal) * _lastMinute * (1 - nonRefund),
+				flashSaleDeal: (1 - fixedDeal) * _flashSale,
+				flashSaleNonRefund: (1 - fixedDeal) * _flashSale * (1 - nonRefund),
+			}
 			: {
-					nonPromo: fixedDeal + _basicDeal,
-					nonPromoNonRefund: fixedDeal + _basicDeal + nonRefund,
-					earlyBooker: fixedDeal + _earlyBooker,
-					earlyBookerNonRefund: fixedDeal + _earlyBooker + nonRefund,
-					lastMinuteDeal: fixedDeal + _lastMinute,
-					lastMinuteNonRefund: fixedDeal + _lastMinute + nonRefund,
-					flashSaleDeal: fixedDeal + _flashSale,
-					flashSaleNonRefund: fixedDeal + _flashSale + nonRefund,
-			  };
+				nonPromo: fixedDeal + _basicDeal,
+				nonPromoNonRefund: fixedDeal + _basicDeal + nonRefund,
+				earlyBooker: fixedDeal + _earlyBooker,
+				earlyBookerNonRefund: fixedDeal + _earlyBooker + nonRefund,
+				lastMinuteDeal: fixedDeal + _lastMinute,
+				lastMinuteNonRefund: fixedDeal + _lastMinute + nonRefund,
+				flashSaleDeal: fixedDeal + _flashSale,
+				flashSaleNonRefund: fixedDeal + _flashSale + nonRefund,
+			};
 
 	toFixedNumber(promo);
 
@@ -231,8 +231,8 @@ function calcPromotionConfig({ basic = 0, lastMinute = 0, earlyBird = 0, flashSa
 		OTAs.Agoda,
 		OTAs.Traveloka,
 		OTAs.Expedia,
-		OTAs.Cozrum,
-		OTAs.CozrumWeb,
+		OTAs.tb,
+		OTAs.tbWeb,
 		OTAs.Airbnb,
 		OTAs.Ctrip,
 		OTAs.Mytour,

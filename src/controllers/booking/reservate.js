@@ -154,12 +154,12 @@ async function reservate(data, user) {
 
 	let ratePlan = data.ratePlanId
 		? await models.RatePlan.findOne({
-				_id: data.ratePlanId,
-				active: true,
-		  })
+			_id: data.ratePlanId,
+			active: true,
+		})
 		: await models.RatePlan.findDefaultRatePlan({
-				serviceType: data.serviceType,
-		  });
+			serviceType: data.serviceType,
+		});
 
 	if (data.ratePlanId && !ratePlan) {
 		throw new ThrowReturn('Not found RatePlan');
@@ -298,7 +298,7 @@ async function reservate(data, user) {
 	data.roomPrice = _.sumBy(data.roomPrices, 'roomPrice');
 	data.rates = mergeRates(data.roomPrices);
 
-	if (data.otaName === LocalOTAs.CozrumExtend || data.otaName === OTAs.OwnerExtend) {
+	if (data.otaName === LocalOTAs.tbExtend || data.otaName === OTAs.OwnerExtend) {
 		data.extendFrom = _.trim(data.extendFrom);
 		if (data.extendFrom) {
 			const prevBooking = await models.Booking.findOne({

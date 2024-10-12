@@ -56,7 +56,7 @@ async function getRatePlans(user, query) {
 		});
 	}
 	if (query.rateType === 'walkin') {
-		const newRatePlans = ratePlans.filter(t => t.otas.includes(OTAs.Cozrum));
+		const newRatePlans = ratePlans.filter(t => t.otas.includes(OTAs.tb));
 		if (newRatePlans.length) {
 			ratePlans = newRatePlans;
 		}
@@ -166,7 +166,7 @@ async function deletePolicy(user, id) {
 
 async function findRoomTypePrice({ roomTypes, roomIds, ...filter }) {
 	const prices = await roomTypes.asyncMap(async roomType => {
-		let price = await models.CozrumPrice.findPrices({
+		let price = await models.tbPrice.findPrices({
 			...filter,
 			roomTypeId: roomType._id,
 		});
@@ -181,7 +181,7 @@ async function findRoomTypePrice({ roomTypes, roomIds, ...filter }) {
 			});
 
 			if (virtualRoomType) {
-				price = await models.CozrumPrice.findPrices({
+				price = await models.tbPrice.findPrices({
 					...filter,
 					roomTypeId: virtualRoomType._id,
 				});

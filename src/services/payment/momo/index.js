@@ -47,7 +47,7 @@ async function createPaymentUrl(data) {
 		orderInfo,
 		returnUrl:
 			platform === Platform.App
-				? `cozrum://payment-successful/${otaBookingId}/${otaName}/${paymentRef}/${PAYMENT_NAME}`
+				? `tb://payment-successful/${otaBookingId}/${otaName}/${paymentRef}/${PAYMENT_NAME}`
 				: host || `${returnUrl}/${otaBookingId}`,
 		notifyUrl,
 		extraData,

@@ -38,7 +38,7 @@ const LINES = [
 	},
 	{
 		from: CASH_FLOW_OBJECT.BACKUP_CASH_FUND,
-		to: CASH_FLOW_OBJECT.COMMISSION_COZRUM,
+		to: CASH_FLOW_OBJECT.COMMISSION_tb,
 		line: 84,
 	},
 ];

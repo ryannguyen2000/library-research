@@ -7,7 +7,7 @@ const { Services, PromotionType } = require('@utils/const');
 
 const { Schema } = mongoose;
 
-const CozrumPriceSchema = new Schema(
+const tbPriceSchema = new Schema(
 	{
 		// listingId: { type: Schema.Types.ObjectId, ref: 'Listing' },
 		roomTypeId: { type: Schema.Types.ObjectId, ref: 'RoomType' },
@@ -17,10 +17,10 @@ const CozrumPriceSchema = new Schema(
 		available: Number,
 		price: Number,
 		promotionPrice: Number,
-		promotionId: { type: Schema.Types.ObjectId, ref: 'CozrumPromotion' },
+		promotionId: { type: Schema.Types.ObjectId, ref: 'tbPromotion' },
 		// price for hours
 		priceFirstHours: Number,
-		hourlyPromotionId: { type: Schema.Types.ObjectId, ref: 'CozrumPromotion' },
+		hourlyPromotionId: { type: Schema.Types.ObjectId, ref: 'tbPromotion' },
 		promotionPriceFirstHours: Number,
 		priceAdditionalHours: Number,
 		promotionPriceAdditionalHours: Number,
@@ -32,9 +32,9 @@ const CozrumPriceSchema = new Schema(
 	}
 );
 
-CozrumPriceSchema.index({ date: 1 });
+tbPriceSchema.index({ date: 1 });
 
-CozrumPriceSchema.statics = {
+tbPriceSchema.statics = {
 	async calcPromotionPrice({ roomTypeId, ratePlanId, from, to }) {
 		if (from) {
 			from.zeroHours();
@@ -54,7 +54,7 @@ CozrumPriceSchema.statics = {
 			from = startDay;
 		}
 
-		const promotions = await this.model('CozrumPromotion').findRoomRatePromotions(roomTypeId, ratePlanId);
+		const promotions = await this.model('tbPromotion').findRoomRatePromotions(roomTypeId, ratePlanId);
 
 		if (!promotions.length) {
 			return await this.updateMany(
@@ -258,4 +258,4 @@ CozrumPriceSchema.statics = {
 	},
 };
 
-module.exports = mongoose.model('CozrumPrice', CozrumPriceSchema, 'cozrum_price');
+module.exports = mongoose.model('tbPrice', tbPriceSchema, 'tb_price');

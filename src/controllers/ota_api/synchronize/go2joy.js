@@ -314,7 +314,7 @@ async function syncDone(syncId) {
 // 	const appliedDates = {};
 
 // 	const promotions = price
-// 		? await mongoose.model('CozrumPromotion').findPromotionsForListing(otaListing.otaListingId, ratePlanId, OTAName)
+// 		? await mongoose.model('tbPromotion').findPromotionsForListing(otaListing.otaListingId, ratePlanId, OTAName)
 // 		: [];
 
 // 	rangeDate(ffrom, tto)

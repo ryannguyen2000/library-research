@@ -145,7 +145,7 @@ function getRealCollected({ revenue, realRevenue, config, totalFinalIncomeOther 
 		total,
 		data: _.compact([
 			{
-				key: 'cozrumRevenue',
+				key: 'tbRevenue',
 				total: total - hostCollected,
 			},
 			{
@@ -276,7 +276,7 @@ function getHostFee({ revenue, sharedCost, fee, config, taxRate, language }) {
 				total: tax,
 				description: `(8) ${_.round(
 					taxRate * 100
-				)}% x %hostIncome% (Ở mục số 6, Cozrum đã bù giảm trừ cho chủ nhà)`,
+				)}% x %hostIncome% (Ở mục số 6, tb đã bù giảm trừ cho chủ nhà)`,
 			},
 			{
 				key: 'commissionAndTransFee',

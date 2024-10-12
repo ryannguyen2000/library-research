@@ -6,7 +6,7 @@ const { PromotionType, RuleDay, LocalOTAs, PromotionChangeType } = require('@uti
 
 const { Schema } = mongoose;
 
-const CozrumPromotionSchema = new Schema(
+const tbPromotionSchema = new Schema(
 	{
 		active: { default: true, type: Boolean },
 		delete: { default: false, type: Boolean },
@@ -37,7 +37,7 @@ const CozrumPromotionSchema = new Schema(
 	}
 );
 
-CozrumPromotionSchema.methods = {
+tbPromotionSchema.methods = {
 	isMatchRange(checkIn, checkOut) {
 		checkIn = moment(checkIn).startOf('days').utc(7);
 		checkOut = moment(checkOut).startOf('days').utc(7);
@@ -111,7 +111,7 @@ function parsePrice(number) {
 	return Number(number / 1000).toFixed(0) * 1000;
 }
 
-CozrumPromotionSchema.statics = {
+tbPromotionSchema.statics = {
 	// findPromotionsForListing(otaListingId, ratePlanId, ota) {
 	// 	const query = {
 	// 		active: true,
@@ -163,4 +163,4 @@ CozrumPromotionSchema.statics = {
 	},
 };
 
-module.exports = mongoose.model('CozrumPromotion', CozrumPromotionSchema, 'cozrum_promotion');
+module.exports = mongoose.model('tbPromotion', tbPromotionSchema, 'tb_promotion');

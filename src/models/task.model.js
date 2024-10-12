@@ -428,7 +428,7 @@ TaskSchema.methods = {
 			}
 
 			if (!newData.payDescription) {
-				newData.payDescription = `COZRUM HOAN TIEN CHO MA DAT PHONG ${booking.otaBookingId}`;
+				newData.payDescription = `tb HOAN TIEN CHO MA DAT PHONG ${booking.otaBookingId}`;
 			}
 			if (!data || !data.description) {
 				const reasonTxt = await this.getReasonTxt();

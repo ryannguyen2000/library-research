@@ -90,7 +90,7 @@
 // 	if (!service_id) return;
 
 // 	const promotions = await mongoose
-// 		.model('CozrumPromotion')
+// 		.model('tbPromotion')
 // 		.findPromotionsForListing(otaListing.otaListingId, OTAName);
 
 // 	const settings_data = [];

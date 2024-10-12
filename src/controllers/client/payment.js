@@ -10,7 +10,7 @@ const { createPaymentQr, checkQRPaymentResult } = require('@controllers/banking/
 const { throwError, ERROR_CODE } = require('./error');
 
 async function createPayment(body) {
-	let { otaBookingId, bankCode, method, otaName = OTAs.CozrumWeb, platform, ip: ipAddr, language } = body;
+	let { otaBookingId, bankCode, method, otaName = OTAs.tbWeb, platform, ip: ipAddr, language } = body;
 
 	if (method === ThirdPartyPayment.BANK_TRANSFER) {
 		return createPaymentQr(body);
@@ -82,9 +82,8 @@ async function updateBookingPayment({ ref, ...data }, error, language) {
 		currencyAmount,
 		collectorCustomName: ref.method,
 		source: models.PaymentMethod.getPayoutSource(ref.method),
-		description: `Thanh toán qua ${ref.method.toUpperCase()}, transaction no: ${ref.transactionNo}, orderId: ${
-			ref.ref
-		}`,
+		description: `Thanh toán qua ${ref.method.toUpperCase()}, transaction no: ${ref.transactionNo}, orderId: ${ref.ref
+			}`,
 		createdAt: new Date(),
 		blockIds: [booking.blockId],
 		productId: ref.transactionNo,
@@ -180,7 +179,7 @@ async function processIPNNeopay(body) {
 		}
 
 		apiDebugger.response = { data: data.dataResponse };
-		apiDebugger.save().catch(() => {});
+		apiDebugger.save().catch(() => { });
 
 		return data.dataResponse;
 	} catch (e) {
@@ -189,7 +188,7 @@ async function processIPNNeopay(body) {
 		const data = { respcode: 1, respmsg: 'Unexpected error' };
 
 		apiDebugger.response = { data };
-		apiDebugger.save().catch(() => {});
+		apiDebugger.save().catch(() => { });
 
 		return data;
 	}
@@ -380,7 +379,7 @@ async function getBankInfo({ bookingId, propertyId }) {
 		content: bank.displayContent || 'Tên-Số phòng-Chi nhánh',
 		note:
 			bank.displayNote ||
-			'Sau khi chuyển khoản thành công, vui lòng chụp và gửi sao kê để Cozrum tiện đối chiếu. Xin cảm ơn!',
+			'Sau khi chuyển khoản thành công, vui lòng chụp và gửi sao kê để tb tiện đối chiếu. Xin cảm ơn!',
 	}));
 
 	return rs;

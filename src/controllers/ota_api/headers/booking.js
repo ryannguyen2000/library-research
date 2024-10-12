@@ -493,16 +493,16 @@ function getAuthMessage(otaConfig) {
 // }
 
 // getHeaders({
-// 	password: 'Cozrum2023!',
-// 	username: 'vacationrentalcozrum@gmail.com',
+// 	password: 'tb2023!',
+// 	username: 'vacationrentaltb@gmail.com',
 // }).catch(e => {
 // 	console.error(e);
 // });
 
 // getCard({
 // 	otaConfig: {
-// 		password: 'Cozrum2023!',
-// 		username: 'vacationrentalcozrum@gmail.com',
+// 		password: 'tb2023!',
+// 		username: 'vacationrentaltb@gmail.com',
 // 	},
 // 	url: 'https://account.booking.com/oauth2/authorize?client_id=7j60e3SrMdKhbyGR1Rgl;redirect_uri=https%3A%2F%2Fsecure-admin.booking.com%2Fauthenticate.html;response_type=code;state=eyJleHRyYW5ldF9sYW5nIjoieHUiLCJsYW5nIjoieHUiLCJoYXNfYnZjIjowLCJob3RlbF9pZCI6MTE3OTYwMzEsImJuIjo0OTU4NTEwNjE0fQ',
 // }).catch(e => {
