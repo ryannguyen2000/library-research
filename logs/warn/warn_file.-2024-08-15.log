@@ -1,0 +1,23 @@
+[2024-08-15T11:19:29.433] [WARN] default - JsonWebTokenError: jwt must be provided
+    at Object.module.exports [as verify] (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\jsonwebtoken\verify.js:53:17)
+    at module.exports (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\src\core\middleware\jwtVerify.js:17:23)
+    at C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\src\core\router.js:70:10
+    at Layer.handle [as handle_request] (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\log4js\lib\connect-logger.js:321:12
+    at Layer.handle [as handle_request] (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:328:13)

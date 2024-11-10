@@ -1,0 +1,31 @@
+[2024-08-16T11:06:09.039] [WARN] default - JsonWebTokenError: jwt must be provided
+    at Object.module.exports [as verify] (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\jsonwebtoken\verify.js:53:17)
+    at module.exports (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\src\core\middleware\jwtVerify.js:17:23)
+    at C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\src\core\router.js:70:10
+    at Layer.handle [as handle_request] (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\log4js\lib\connect-logger.js:321:12
+    at Layer.handle [as handle_request] (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\node_modules\express\lib\router\index.js:346:12)
+[2024-08-16T16:09:58.783] [WARN] default - Error: User login invalid 5bd979d16ced2e868cfe77b5 {"_id":"5bd979d16ced2e868cfe77b5","password":"3106324c1584be0e62e8221e87d6f17d0d046ba5786d98caf6d304139f638589","name":"System Admin","revokeKey":"f69d1737-4f37-4bbe-a3e6-0de7b6ec7966"}
+    at module.exports (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\src\core\middleware\jwtVerify.js:23:10)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\src\core\router.js:70:4
+[2024-08-16T16:10:00.485] [WARN] default - Error: User login invalid 5bd979d16ced2e868cfe77b5 {"_id":"5bd979d16ced2e868cfe77b5","password":"3106324c1584be0e62e8221e87d6f17d0d046ba5786d98caf6d304139f638589","name":"System Admin","revokeKey":"f69d1737-4f37-4bbe-a3e6-0de7b6ec7966"}
+    at module.exports (C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\src\core\middleware\jwtVerify.js:23:10)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async C:\Users\nguye\OneDrive\Documents\GitHub\cozrum-server\src\core\router.js:70:4
